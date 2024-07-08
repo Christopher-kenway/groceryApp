@@ -1,0 +1,12 @@
+.herosection-info > h1, p{
+  line-height: 4rem;
+
+}
+
+
+.cardcontent{
+  border: 11px solid #064F26;
+  background: #064F26;
+  font-family: "Poppins";
+  
+}
