@@ -151,10 +151,10 @@ const Header = () => {
           </Link>
         </nav>
 
-        <Dialog
+        <dialog
           open={isMobileMenuOpen}
           onClose={toggleMobileMenu}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+          className="absolute left-0 top-0 z-10 h-screen max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4"
         >
           <div className="bg-white rounded-lg p-4 w-64">
             <button onClick={toggleMobileMenu} className="text-green-900 mb-4">
@@ -175,44 +175,23 @@ const Header = () => {
             </button>
             <ul className="space-y-4">
               <li>
-                <Link
-                  to="/Checkout"
-                  onClick={toggleMobileMenu}
-                  className="text-green-900"
-                >
+                <Link to="/" onClick={toggleMobileMenu} className="font-bold">
                   Home
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/Checkout"
-                  onClick={toggleMobileMenu}
-                  className="text-green-900"
-                >
-                  Shop
+                <Link to="/" onClick={toggleMobileMenu} className="font-bold">
+                  Settings
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/Checkout"
-                  onClick={toggleMobileMenu}
-                  className="text-green-900"
-                >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/Checkout"
-                  onClick={toggleMobileMenu}
-                  className="text-green-900"
-                >
-                  Contact
+                <Link to="/" onClick={toggleMobileMenu} className="font-bold">
+                  Location
                 </Link>
               </li>
             </ul>
           </div>
-        </Dialog>
+        </dialog>
 
         <Dialog
           open={isOpen}
@@ -222,7 +201,10 @@ const Header = () => {
           <Card className=" mx-auto w-full max-w-[34rem] h-full rounded-sm">
             <CardContent className="cardcontent p-6 flex flex-col gap-5">
               <Link to="/">
-                <Typography className="flex text-gray-200 font-thin cursor-pointer">
+                <Typography
+                  onClick={handleOpen}
+                  className="flex text-gray-200 font-thin cursor-pointer"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"

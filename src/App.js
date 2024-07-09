@@ -14,7 +14,6 @@ function App() {
     <main className="w-full">
       <Routes>
         <Route path="/" element={<MainContainer/>} />
-        {/* <Route path="/Checkout" element={<Checkout/>} /> */}
       </Routes>
     </main>
     <Content />

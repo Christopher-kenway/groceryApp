@@ -270,13 +270,13 @@ const PaymentMethodDialog = ({ open, onClose }) => {
           </div>
         </DialogContent>
         <div className="flex justify-center items-center w-full mb-6">
-          <button
+          <Button
             className="bg-green-900 px-4 py-2 border-green-900 border-2 rounded-lg"
-            onClick={onClose}
+            onClick={onclose}
             color="primary"
           >
             proceed
-          </button>
+          </Button>
         </div>
       </Dialog>
     </React.Fragment>
