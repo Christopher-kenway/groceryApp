@@ -29,6 +29,7 @@ import { frame } from "framer-motion";
 import { green } from "@mui/material/colors";
 import { useStateValue } from "../../context/StateProvider";
 import { actionType } from "../../context/reducer";
+
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     right: -3,
@@ -169,7 +170,12 @@ const Checkout = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-[50%] md:w-[375px] h-screen p-6 md:p-12 lg:p-6 drop-shadow-md bg-white z-[101] overflow-y-scroll">
+    <motion.div
+      initial={{ opacity: 0, x: 200 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 200 }}
+      className="fixed top-0 left-0 w-full md:w-[50%] h-screen p-6 md:p-12 lg:p-6 drop-shadow-md bg-white z-[101] overflow-y-scroll"
+    >
       <div className="w-full flex items-center p-4 mx-auto">
         <h2 className="text-md font-bold mr-24">Order Summary</h2>
         <div className="flex items-center justify-center gap-3">
@@ -305,7 +311,7 @@ const Checkout = () => {
         selectedPaymentMethod={selectedPaymentMethod}
         setSelectedPaymentMethod={setSelectedPaymentMethod}
       />
-    </div>
+    </motion.div>
   );
 };
 
