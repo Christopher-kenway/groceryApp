@@ -1,0 +1,40 @@
+.card{
+  border: 5px solid #064F26;
+  border-radius: 12px;
+}
+
+.buttongroup {
+  background-color: transparent;
+  overflow: hidden;
+  border: none;
+}
+
+.buttongroup button {
+  min-width: 40px;
+  color: #000;
+  background-color:  #B2FBD2;
+  border: 1.5px solid #064F26;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 1px;
+  border-top-right-radius: 1px;
+  font-weight: 500;
+}
+
+.buttongroup button:nth-of-type(2) {
+  background-color: #064F26;
+  color: #fff;
+}
+
+.buttongroup button:nth-of-type(4) {
+  background-color: #064F26;
+  color: #fff;
+  margin-left: 2.2rem;
+  border-bottom-left-radius: 10px;
+}
+
+.chip{
+  background-color: #B2FBD2;
+  border: 1px solid black;
+  border-radius: 10px;
+}

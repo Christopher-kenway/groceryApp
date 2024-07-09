@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import { styled } from "@mui/material/styles";
+import "./Products.css";
 import Chip from "@mui/material/Chip";
+import { green } from "@mui/material/colors";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import ButtonGroup from "@mui/material/ButtonGroup";
@@ -33,6 +36,12 @@ import redbellpepper from "../../assets/fruits/redbellpepper.png";
 import yellowbellpepper from "../../assets/fruits/yellowbellpepper.png";
 import greengrape from "../../assets/fruits/greengrape.png";
 import redgrape from "../../assets/fruits/redgrape.png";
+
+const useStyles = styled({
+  dialogPaper: {
+    backgroundColor: "transparent", // or any other color you prefer
+  },
+});
 
 const Fruits = () => {
   const [open, setOpen] = useState(false);
@@ -247,13 +256,14 @@ const Fruits = () => {
 
       {selectedProduct && (
         <Dialog
-          aria-labelledby="responsive-dialog-title"
+          aria-labelledby="responsive-dialog-title mx-auto my-auto"
           open={open}
           onClose={handleClose}
+          className="dialog"
         >
           {" "}
           <Card
-            className="h-max border-green-900 border-4 rounded-lg"
+            className="card h-max"
             sx={{ width: "100%", maxWidth: 384, margin: "auto" }}
           >
             <CardMedia
@@ -263,7 +273,7 @@ const Fruits = () => {
               className="object-cover relative w-full"
             />
             <CardContent>
-              <div className="flex gap-24">
+              <div className="card__content flex gap-16">
                 <Typography className="text-lg font-extrabold text-black text-center">
                   {selectedProduct.name}
                 </Typography>
@@ -272,36 +282,69 @@ const Fruits = () => {
                 </Typography>
               </div>
               <Chip
-                label="How do you like your produce? Required"
+                label=" How do you like your produce? Required"
                 variant="outlined"
-                className="mt-8 w-full font-semibold"
+                className="chip mt-8 w-full font-semibold"
               />
               <div className="flex flex-col items-start">
-                <FormGroup className="w-full">
+                <FormGroup className="w-full p-1">
                   <FormControlLabel
                     className="border-b-2 border-green-300 w-full"
-                    control={<Checkbox defaultChecked />}
+                    control={
+                      <Checkbox
+                        sx={{
+                          color: green[800],
+                          "&.Mui-checked": {
+                            color: green[900],
+                          },
+                        }}
+                      />
+                    }
                     label="Uncut"
                   />
                   <FormControlLabel
                     className="border-b-2 border-green-300 w-full my-5"
-                    control={<Checkbox />}
+                    control={
+                      <Checkbox
+                        sx={{
+                          color: green[800],
+                          "&.Mui-checked": {
+                            color: green[900],
+                          },
+                        }}
+                      />
+                    }
                     label="Cut"
                   />
                   <FormControlLabel
                     className="border-b-2 border-green-300 w-full"
-                    control={<Checkbox />}
+                    control={
+                      <Checkbox
+                        sx={{
+                          color: green[800],
+                          "&.Mui-checked": {
+                            color: green[900],
+                          },
+                        }}
+                      />
+                    }
                     label="Frozen"
                   />
                 </FormGroup>
               </div>
             </CardContent>
             <CardActions>
-              <ButtonGroup variant="contained" aria-label="Basic button group">
-                <Button>One</Button>
-                <Button>Two</Button>
-                <Button>Three</Button>
+              <ButtonGroup
+                className="buttongroup mt-2 flex w-full p-1"
+                aria-label="Basic button group"
+              >
+                <Button>-</Button>
+                <Button>5</Button>
+                <Button>+</Button>
               </ButtonGroup>
+              <Button variant="contained" href="#contained-buttons">
+                Add items to cart
+              </Button>
             </CardActions>
           </Card>
         </Dialog>
