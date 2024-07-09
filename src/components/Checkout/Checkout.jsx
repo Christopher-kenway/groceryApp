@@ -83,91 +83,206 @@ const PaymentMethodDialog = ({ open, onClose }) => {
   };
 
   return (
-    <Dialog
-      aria-labelledby="responsive-dialog-title"
-      open={open}
-      onClose={onClose}
-      PaperProps={{
-        sx: { borderRadius: "15px" },
-      }}
-    >
-      <Card>
-        <CardContent className="flex flex-col mx-auto w-full h-full">
-          <DialogTitle
-            className="flex items-center justify-between gap-28"
-            sx={{ margin: 0 }}
+    <React.Fragment>
+      <Dialog
+        aria-labelledby="responsive-dialog-title"
+        open={open}
+        onClose={onClose}
+        PaperProps={{
+          sx: { borderRadius: "15px" },
+        }}
+      >
+        <Card>
+          <CardContent className="flex flex-col mx-auto w-full h-full">
+            <DialogTitle
+              className="flex items-center justify-between gap-28"
+              sx={{ margin: 0 }}
+            >
+              <p className="text-md font-medium ">Payment Method</p>
+              <IconButton
+                edge="end"
+                color="inherit"
+                onClick={onClose}
+                aria-label="close"
+              >
+                <CloseIcon />
+              </IconButton>
+            </DialogTitle>
+            <FormControl className="h-full w-full mx-auto">
+              <RadioGroup
+                aria-label="payment method"
+                name="paymentMethod"
+                value={selectedPaymentMethod}
+                onChange={handlePaymentMethodChange}
+                className="gap-10 p-3"
+              >
+                <FormControlLabel
+                  value="debit"
+                  control={<Radio color="success" />}
+                  label={
+                    <div className="flex justify-between items-center gap-20">
+                      <div className="mr-4 px-1 py-2 flex items-center">
+                        <span className="text-sm font-medium mr-48 ">
+                          Add Debit card
+                        </span>
+                        <CreditCardIcon className="" />
+                      </div>
+                    </div>
+                  }
+                  className="border-b-2 border-gray-700"
+                  sx={{ margin: 0 }}
+                />
+
+                <FormControlLabel
+                  value="bank"
+                  control={<Radio color="success" />}
+                  label={
+                    <div className="flex w-full items-center">
+                      <div className="mr-4  px-1 py-2 flex items-center">
+                        <span className="text-sm font-medium mr-48">
+                          Bank Transfer
+                        </span>
+                        <AccountBalanceIcon className="ml-2" />
+                      </div>
+                    </div>
+                  }
+                  className="border-b-2 border-gray-700"
+                  sx={{ margin: 0, marginTop: 2, marginBottom: 2 }}
+                />
+
+                <FormControlLabel
+                  value="cash"
+                  control={<Radio color="success" />}
+                  label={
+                    <div className="flex w-full items-center">
+                      <div className="mr-4  px-1 py-2 flex items-center">
+                        <span className="text-sm font-medium mr-64 ">Cash</span>
+                        <MoneyIcon className="" />
+                      </div>
+                    </div>
+                  }
+                  className="border-b-2 border-gray-700"
+                  sx={{ margin: 0 }}
+                />
+              </RadioGroup>
+            </FormControl>
+          </CardContent>
+        </Card>
+      </Dialog>
+      <Dialog
+        open={openDebitDialog}
+        onClose={onClose}
+        PaperProps={{ style: { borderRadius: 15 } }}
+      >
+        <DialogTitle>
+          Add Card
+          <IconButton
+            edge="end"
+            color="inherit"
+            onClick={onClose}
+            aria-label="close"
+            style={{ position: "absolute", right: 8, top: 8 }}
           >
-            <p className="text-md font-medium ">Payment Method</p>
-            <IconButton
-              edge="end"
-              color="inherit"
-              onClick={onClose}
-              aria-label="close"
-            >
-              <CloseIcon />
-            </IconButton>
-          </DialogTitle>
-          <FormControl className="h-full w-full mx-auto">
-            <RadioGroup
-              aria-label="payment method"
-              name="paymentMethod"
-              value={selectedPaymentMethod}
-              onChange={handlePaymentMethodChange}
-              className="gap-10 p-3"
-            >
-              <FormControlLabel
-                value="debit"
-                control={<Radio color="success" />}
-                label={
-                  <div className="flex justify-between items-center gap-20">
-                    <div className="mr-4 px-1 py-2 flex items-center">
-                      <span className="text-sm font-medium mr-48 ">
-                        Add Debit card
-                      </span>
-                      <CreditCardIcon className="" />
-                    </div>
-                  </div>
-                }
-                className="border-b-2 border-gray-700"
-                sx={{ margin: 0 }}
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent>
+          <div className="mb-4 text-green-800 font-semibold">
+            Amount Due: ₦12,850
+          </div>
+          <form>
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-1">
+                Card Holder
+              </label>
+              <input
+                type="text"
+                className="w-full border border-gray-300 rounded-lg p-2"
+                placeholder="Full Name"
               />
-
-              <FormControlLabel
-                value="bank"
-                control={<Radio color="success" />}
-                label={
-                  <div className="flex w-full items-center">
-                    <div className="mr-4  px-1 py-2 flex items-center">
-                      <span className="text-sm font-medium mr-48">
-                        Bank Transfer
-                      </span>
-                      <AccountBalanceIcon className="ml-2" />
-                    </div>
-                  </div>
-                }
-                className="border-b-2 border-gray-700"
-                sx={{ margin: 0, marginTop: 2, marginBottom: 2 }}
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-1">
+                Card Number
+              </label>
+              <input
+                type="text"
+                className="w-full border border-gray-300 rounded-lg p-2"
+                placeholder="0000 0000 0000 0000"
               />
-
-              <FormControlLabel
-                value="cash"
-                control={<Radio color="success" />}
-                label={
-                  <div className="flex w-full items-center">
-                    <div className="mr-4  px-1 py-2 flex items-center">
-                      <span className="text-sm font-medium mr-64 ">Cash</span>
-                      <MoneyIcon className="" />
-                    </div>
-                  </div>
-                }
-                className="border-b-2 border-gray-700"
-                sx={{ margin: 0 }}
-              />
-            </RadioGroup>
-          </FormControl>
-        </CardContent>
-      </Card>
-    </Dialog>
+            </div>
+            <div className="flex gap-4">
+              <div className="mb-4 flex-1">
+                <label className="block text-sm font-medium mb-1">
+                  Card Expiry
+                </label>
+                <input
+                  type="text"
+                  className="w-full border border-gray-300 rounded-lg p-2"
+                  placeholder="MM/YY"
+                />
+              </div>
+              <div className="mb-4 flex-1">
+                <label className="block text-sm font-medium mb-1">CVV</label>
+                <input
+                  type="text"
+                  className="w-full border border-gray-300 rounded-lg p-2"
+                  placeholder="000"
+                />
+              </div>
+            </div>
+          </form>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={onClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={onClose} color="primary">
+            Pay
+          </Button>
+        </DialogActions>
+      </Dialog>
+      <Dialog
+        open={openTransferDialog}
+        onClose={onClose}
+        PaperProps={{ style: { borderRadius: 15 } }}
+      >
+        <DialogTitle>
+          Bank Transfer
+          <IconButton
+            edge="end"
+            color="inherit"
+            onClick={onClose}
+            aria-label="close"
+            style={{ position: "absolute", right: 8, top: 8 }}
+          >
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent>
+          <div className="mb-4">
+            <div className="text-lg font-semibold mb-2">
+              Make a Transfer of NGN 12,850 to:
+            </div>
+            <div className="mb-2">Name: Eriqueenah Grocery Store Credits</div>
+            <div className="mb-2">Account Number: 0000000000</div>
+            <div className="mb-2">Bank: Providus Bank</div>
+            <Divider className="my-2" />
+            <div className="text-sm">
+              Note: Your order will be processed once payment is confirmed.
+            </div>
+          </div>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={onClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={onClose} color="primary">
+            Ok
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </React.Fragment>
   );
 };
 
