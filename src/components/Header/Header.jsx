@@ -19,6 +19,8 @@ import { useStateValue } from "../../context/StateProvider";
 import { actionType } from "../../context/reducer";
 import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import HomeIcon from "@mui/icons-material/Home";
+import SettingsIcon from "@mui/icons-material/Settings";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -157,7 +159,10 @@ const Header = () => {
           className="absolute left-0 top-0 z-10 h-screen max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4"
         >
           <div className="bg-white rounded-lg p-4 w-64">
-            <button onClick={toggleMobileMenu} className="text-green-900 mb-4">
+            <button
+              onClick={toggleMobileMenu}
+              className="text-green-900 mb-4 item-end justify-end w-full flex "
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -174,19 +179,34 @@ const Header = () => {
               </svg>
             </button>
             <ul className="space-y-4">
-              <li>
-                <Link to="/" onClick={toggleMobileMenu} className="font-bold">
+              <li className="">
+                <Link
+                  to="/"
+                  onClick={toggleMobileMenu}
+                  className="font-semibold flex w-full item-center justify-between"
+                >
                   Home
+                  <HomeIcon className="text-green-900" />
                 </Link>
               </li>
-              <li>
-                <Link to="/" onClick={toggleMobileMenu} className="font-bold">
+              <li className="">
+                <Link
+                  to="/"
+                  onClick={toggleMobileMenu}
+                  className="font-semibold flex w-full item-center justify-between"
+                >
                   Settings
+                  <SettingsIcon className="text-green-900" />
                 </Link>
               </li>
-              <li>
-                <Link to="/" onClick={toggleMobileMenu} className="font-bold">
+              <li className="">
+                <Link
+                  to="/"
+                  onClick={toggleMobileMenu}
+                  className="font-semibold flex w-full item-center justify-between"
+                >
                   Location
+                  <PlaceOutlinedIcon className="text-green-900" />
                 </Link>
               </li>
             </ul>
