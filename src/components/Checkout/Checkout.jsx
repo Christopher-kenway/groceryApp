@@ -176,13 +176,13 @@ const Checkout = () => {
       exit={{ opacity: 0, x: 200 }}
       className="fixed top-0 left-0 w-full md:w-[50%] h-screen p-6 md:p-12 lg:p-6 drop-shadow-md bg-white z-[101] overflow-y-scroll"
     >
-      <div className="w-full flex items-center p-4 mx-auto">
+      <div className="w-full flex items-center justify-between p-4 mx-auto">
         <h2 className="text-md font-bold mr-24">Order Summary</h2>
         <div className="flex items-center justify-center gap-3">
           <h7 className="text-sm">My Cart</h7>
           <IconButton aria-label="cart">
             <StyledBadge
-              className="mr-2"
+              className="mr-10"
               badgeContent={3}
               sx={{
                 color: green[900],

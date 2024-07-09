@@ -37,6 +37,8 @@ import redbellpepper from "../../assets/fruits/redbellpepper.png";
 import yellowbellpepper from "../../assets/fruits/yellowbellpepper.png";
 import greengrape from "../../assets/fruits/greengrape.png";
 import redgrape from "../../assets/fruits/redgrape.png";
+import { useStateValue } from "../../context/StateProvider";
+import { actionType } from "../../context/reducer";
 
 const useStyles = styled({
   dialogPaper: {
@@ -45,6 +47,14 @@ const useStyles = styled({
 });
 
 const Fruits = () => {
+  const [{ cartShow }, dispatch] = useStateValue();
+
+  const showCart = () => {
+    dispatch({
+      type: actionType.SET_CART_SHOW,
+      payload: !cartShow,
+    });
+  };
   const [open, setOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const products = [
@@ -344,19 +354,19 @@ const Fruits = () => {
                 <Button>-</Button>
                 <Button>5</Button>
                 <Button>+</Button>
-                <Link to="/">
-                  <Button
-                    sx={{
-                      fontSize: "10px",
-                      padding: "8px 16px",
-                      "&:hover": {
-                        backgroundColor: green[900],
-                      },
-                    }}
-                  >
-                    Add item(s) to cart
-                  </Button>
-                </Link>
+
+                <Button
+                  onClick={showCart}
+                  sx={{
+                    fontSize: "10px",
+                    padding: "8px 16px",
+                    "&:hover": {
+                      backgroundColor: green[900],
+                    },
+                  }}
+                >
+                  Add item(s) to cart
+                </Button>
               </ButtonGroup>
             </CardActions>
           </Card>
