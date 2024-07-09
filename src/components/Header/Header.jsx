@@ -15,13 +15,22 @@ import Logo from "../../assets/Logo.png";
 import signlogo from "../../assets/signlogo.png";
 import heroSvg from "../../assets/heroSvg.svg";
 import "./Header.css";
-
+import { useStateValue } from "../../context/StateProvider";
+import { actionType } from "../../context/reducer";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleOpen = () => setIsOpen(!isOpen);
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  const [{ cartShow }, dispatch] = useStateValue();
+
+  const showCart = () => {
+    dispatch({
+      type: actionType.SET_CART_SHOW,
+      payload: !cartShow,
+    });
+  };
 
   return (
     <>
@@ -89,6 +98,7 @@ const Header = () => {
             <motion.button
               whileTap={{ scale: 0.9 }}
               className="flex items-center text-green-800 hover:text-green-900 cursor-pointer"
+              onClick={showCart}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -137,7 +147,7 @@ const Header = () => {
               />
             </svg>
           </button>
-          <Link to="/Checkout" className="logo">
+          <Link to="/" className="logo">
             <motion.img
               whileTap={{ scale: 0.9 }}
               alt="Eriqueenah Logo"
