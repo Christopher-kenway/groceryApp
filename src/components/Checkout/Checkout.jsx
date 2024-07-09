@@ -1,31 +1,32 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import Divider from "@mui/material/Divider";
-import { motion } from "framer-motion";
 import {
-  Button,
-  Badge,
   IconButton,
   Dialog,
   DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+  Badge,
+  Divider,
   Card,
-  Radio,
   RadioGroup,
   FormControlLabel,
+  Radio,
   FormControl,
-  FormLabel,
   CardContent,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import AddIcon from "@mui/icons-material/Add";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import CloseIcon from "@mui/icons-material/Close";
-import CreditCardIcon from "@mui/icons-material/CreditCard";
-import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
-import MoneyIcon from "@mui/icons-material/Money";
-import { frame } from "framer-motion";
+import {
+  Add as AddIcon,
+  Close as CloseIcon,
+  Delete as DeleteIcon,
+  ShoppingCart as ShoppingCartIcon,
+  CreditCard as CreditCardIcon,
+  AccountBalance as AccountBalanceIcon,
+  Money as MoneyIcon,
+  Edit as EditIcon,
+} from "@mui/icons-material";
+import { motion } from "framer-motion";
 import { green } from "@mui/material/colors";
 import { useStateValue } from "../../context/StateProvider";
 import { actionType } from "../../context/reducer";
@@ -39,109 +40,143 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-const PaymentMethodDialog = ({
-  open,
-  onClose,
-  selectedPaymentMethod,
-  setSelectedPaymentMethod,
-}) => {
+const PaymentMethodDialog = ({ open, onClose }) => {
+  const [
+    { selectedPaymentMethod, openDebitDialog, openTransferDialog },
+    dispatch,
+  ] = useStateValue();
+
   const handlePaymentMethodChange = (event) => {
-    setSelectedPaymentMethod(event.target.value);
+    const value = event.target.value;
+    dispatch({
+      type: actionType.SET_PAYMENT_METHOD,
+      payload: value,
+    });
+    if (value === "debit") {
+      dispatch({
+        type: actionType.SET_OPEN_DEBIT_DIALOG,
+        payload: true,
+      });
+      dispatch({
+        type: actionType.SET_OPEN_TRANSFER_DIALOG,
+        payload: false,
+      });
+    } else if (value === "bank") {
+      dispatch({
+        type: actionType.SET_OPEN_TRANSFER_DIALOG,
+        payload: true,
+      });
+      dispatch({
+        type: actionType.SET_OPEN_DEBIT_DIALOG,
+        payload: false,
+      });
+    } else {
+      dispatch({
+        type: actionType.SET_OPEN_DEBIT_DIALOG,
+        payload: false,
+      });
+      dispatch({
+        type: actionType.SET_OPEN_TRANSFER_DIALOG,
+        payload: false,
+      });
+    }
   };
 
   return (
-    <React.Fragment>
-      <Dialog
-        aria-labelledby="responsive-dialog-title"
-        open={open}
-        onClose={onClose}
-        PaperProps={{
-          sx: { borderRadius: "15px" },
-        }}
-      >
-        <Card>
-          <CardContent className="flex flex-col mx-auto w-full h-full">
-            <DialogTitle
-              className="flex items-center justify-between gap-28"
-              sx={{ margin: 0 }}
+    <Dialog
+      aria-labelledby="responsive-dialog-title"
+      open={open}
+      onClose={onClose}
+      PaperProps={{
+        sx: { borderRadius: "15px" },
+      }}
+    >
+      <Card>
+        <CardContent className="flex flex-col mx-auto w-full h-full">
+          <DialogTitle
+            className="flex items-center justify-between gap-28"
+            sx={{ margin: 0 }}
+          >
+            <p className="text-md font-medium ">Payment Method</p>
+            <IconButton
+              edge="end"
+              color="inherit"
+              onClick={onClose}
+              aria-label="close"
             >
-              <p className="text-md font-medium ">Payment Method</p>
-              <IconButton
-                edge="end"
-                color="inherit"
-                onClick={onClose}
-                aria-label="close"
-              >
-                <CloseIcon />
-              </IconButton>
-            </DialogTitle>
-            <FormControl className="h-full w-full mx-auto">
-              <RadioGroup
-                aria-label="payment method"
-                name="paymentMethod"
-                value={selectedPaymentMethod}
-                onChange={handlePaymentMethodChange}
-                className="gap-10 p-3 "
-              >
-                <FormControlLabel
-                  value="debit"
-                  control={<Radio color="success" />}
-                  label={
-                    <div className="flex justify-between items-center gap-20">
-                      <div className="mr-4 px-1 py-2 flex items-center">
-                        <span className="text-sm font-medium mr-48 ">
-                          Add Debit card
-                        </span>
-                        <CreditCardIcon className="" />
-                      </div>
+              <CloseIcon />
+            </IconButton>
+          </DialogTitle>
+          <FormControl className="h-full w-full mx-auto">
+            <RadioGroup
+              aria-label="payment method"
+              name="paymentMethod"
+              value={selectedPaymentMethod}
+              onChange={handlePaymentMethodChange}
+              className="gap-10 p-3"
+            >
+              <FormControlLabel
+                value="debit"
+                control={<Radio color="success" />}
+                label={
+                  <div className="flex justify-between items-center gap-20">
+                    <div className="mr-4 px-1 py-2 flex items-center">
+                      <span className="text-sm font-medium mr-48 ">
+                        Add Debit card
+                      </span>
+                      <CreditCardIcon className="" />
                     </div>
-                  }
-                  className="border-b-2 border-gray-700"
-                  sx={{ margin: 0 }}
-                />
+                  </div>
+                }
+                className="border-b-2 border-gray-700"
+                sx={{ margin: 0 }}
+              />
 
-                <FormControlLabel
-                  value="bank"
-                  control={<Radio color="success" />}
-                  label={
-                    <div className="flex w-full items-center">
-                      <div className="mr-4  px-1 py-2 flex items-center">
-                        <span className="text-sm font-medium mr-48">
-                          Bank Transfer
-                        </span>
-                        <AccountBalanceIcon className="ml-2" />
-                      </div>
+              <FormControlLabel
+                value="bank"
+                control={<Radio color="success" />}
+                label={
+                  <div className="flex w-full items-center">
+                    <div className="mr-4  px-1 py-2 flex items-center">
+                      <span className="text-sm font-medium mr-48">
+                        Bank Transfer
+                      </span>
+                      <AccountBalanceIcon className="ml-2" />
                     </div>
-                  }
-                  className="border-b-2 border-gray-700"
-                  sx={{ margin: 0, marginTop: 2, marginBottom: 2 }}
-                />
+                  </div>
+                }
+                className="border-b-2 border-gray-700"
+                sx={{ margin: 0, marginTop: 2, marginBottom: 2 }}
+              />
 
-                <FormControlLabel
-                  value="Cash"
-                  control={<Radio color="success" />}
-                  label={
-                    <div className="flex w-full items-center">
-                      <div className="mr-4  px-1 py-2 flex items-center">
-                        <span className="text-sm font-medium mr-64 ">Cash</span>
-                        <MoneyIcon className="" />
-                      </div>
+              <FormControlLabel
+                value="cash"
+                control={<Radio color="success" />}
+                label={
+                  <div className="flex w-full items-center">
+                    <div className="mr-4  px-1 py-2 flex items-center">
+                      <span className="text-sm font-medium mr-64 ">Cash</span>
+                      <MoneyIcon className="" />
                     </div>
-                  }
-                  className="border-b-2 border-gray-700"
-                  sx={{ margin: 0 }}
-                />
-              </RadioGroup>
-            </FormControl>
-          </CardContent>
-        </Card>
-      </Dialog>
-    </React.Fragment>
+                  </div>
+                }
+                className="border-b-2 border-gray-700"
+                sx={{ margin: 0 }}
+              />
+            </RadioGroup>
+          </FormControl>
+        </CardContent>
+      </Card>
+    </Dialog>
   );
 };
 
 const Checkout = () => {
   const [{ cartShow }, dispatch] = useStateValue();
+  const [open, setOpen] = useState(false);
+  const [openDebitDialog, setOpenDebitDialog] = useState(false);
+  const [openTransferDialog, setOpenTransferDialog] = useState(false);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
 
   const showCart = () => {
     dispatch({
@@ -150,15 +185,28 @@ const Checkout = () => {
     });
   };
 
-  const [paymentDialogOpen, setPaymentDialogOpen] = useState(false);
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("debit");
-
   const handlePaymentDialogOpen = () => {
-    setPaymentDialogOpen(true);
+    setOpen(true);
   };
 
   const handlePaymentDialogClose = () => {
-    setPaymentDialogOpen(false);
+    setOpen(false);
+    setOpenDebitDialog(false);
+    setOpenTransferDialog(false);
+  };
+
+  const handlePaymentMethodChange = (event) => {
+    setSelectedPaymentMethod(event.target.value);
+    if (event.target.value === "debit") {
+      setOpenDebitDialog(true);
+      setOpenTransferDialog(false);
+    } else if (event.target.value === "bank") {
+      setOpenTransferDialog(true);
+      setOpenDebitDialog(false);
+    } else {
+      setOpenDebitDialog(false);
+      setOpenTransferDialog(false);
+    }
   };
 
   return (
@@ -197,7 +245,6 @@ const Checkout = () => {
           </IconButton>
         </div>
       </div>
-      <Divider />
 
       <div className="border-2 border-gray-200 rounded-lg overflow-hidden">
         <div className="p-2 border-b-2 border-gray-200">
@@ -248,12 +295,15 @@ const Checkout = () => {
       <div className="text-right mt-4 font-bold">
         <p>Subtotal: ₦ 12,850</p>
       </div>
+      <Divider />
+
       <div className="mt-6 flex items-center justify-between">
         <h3 className="text-lg font-bold mb-2">Payment Method</h3>
         <IconButton onClick={handlePaymentDialogOpen}>
           <AddIcon />
         </IconButton>
       </div>
+
       <div className="mt-6 flex items-center justify-between">
         <h3 className="text-lg font-bold mb-2">Choose Address</h3>
         <IconButton>
@@ -297,12 +347,75 @@ const Checkout = () => {
           Place Order
         </Button>
       </div>
+
       <PaymentMethodDialog
-        open={paymentDialogOpen}
+        open={open}
         onClose={handlePaymentDialogClose}
         selectedPaymentMethod={selectedPaymentMethod}
-        setSelectedPaymentMethod={setSelectedPaymentMethod}
+        setSelectedPaymentMethod={handlePaymentMethodChange}
       />
+
+      <Dialog
+        aria-labelledby="responsive-dialog-title"
+        open={openDebitDialog}
+        onClose={handlePaymentDialogClose}
+        PaperProps={{
+          sx: { borderRadius: "15px" },
+        }}
+      >
+        <Card>
+          <CardContent className="flex flex-col mx-auto w-full h-full">
+            <DialogTitle
+              className="flex items-center justify-between gap-28"
+              sx={{ margin: 0 }}
+            >
+              <p className="text-md font-medium ">Add debit card</p>
+              <IconButton
+                edge="end"
+                color="inherit"
+                onClick={handlePaymentDialogClose}
+                aria-label="close"
+              >
+                <CloseIcon />
+              </IconButton>
+            </DialogTitle>
+            <DialogContent dividers className="h-full w-full mx-auto">
+              {/* Debit card form goes here */}
+            </DialogContent>
+          </CardContent>
+        </Card>
+      </Dialog>
+
+      <Dialog
+        aria-labelledby="responsive-dialog-title"
+        open={openTransferDialog}
+        onClose={handlePaymentDialogClose}
+        PaperProps={{
+          sx: { borderRadius: "15px" },
+        }}
+      >
+        <Card>
+          <CardContent className="flex flex-col mx-auto w-full h-full">
+            <DialogTitle
+              className="flex items-center justify-between gap-28"
+              sx={{ margin: 0 }}
+            >
+              <p className="text-md font-medium ">Bank Transfer</p>
+              <IconButton
+                edge="end"
+                color="inherit"
+                onClick={handlePaymentDialogClose}
+                aria-label="close"
+              >
+                <CloseIcon />
+              </IconButton>
+            </DialogTitle>
+            <DialogContent dividers className="h-full w-full mx-auto">
+              {/* Bank transfer form goes here */}
+            </DialogContent>
+          </CardContent>
+        </Card>
+      </Dialog>
     </motion.div>
   );
 };
