@@ -27,7 +27,8 @@ import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import MoneyIcon from "@mui/icons-material/Money";
 import { frame } from "framer-motion";
 import { green } from "@mui/material/colors";
-
+import { useStateValue } from "../../context/StateProvider";
+import { actionType } from "../../context/reducer";
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     right: -3,
@@ -139,6 +140,14 @@ const PaymentMethodDialog = ({
 };
 
 const Checkout = () => {
+  const [{ cartShow }, dispatch] = useStateValue();
+
+  const showCart = () => {
+    dispatch({
+      type: actionType.SET_CART_SHOW,
+      payload: !cartShow,
+    });
+  };
   const [open, setOpen] = useState(false);
   const [paymentDialogOpen, setPaymentDialogOpen] = useState(false);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("debit");
@@ -183,7 +192,7 @@ const Checkout = () => {
           <IconButton
             edge="start"
             color="inherit"
-            onClick={handleClose}
+            onClick={showCart}
             aria-label="close"
           >
             <CloseIcon />
