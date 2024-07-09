@@ -247,40 +247,37 @@ const PaymentMethodDialog = ({ open, onClose }) => {
         onClose={onClose}
         PaperProps={{ style: { borderRadius: 15 } }}
       >
-        <DialogTitle>
-          Bank Transfer
-          <IconButton
-            edge="end"
-            color="inherit"
-            onClick={onClose}
-            aria-label="close"
-            style={{ position: "absolute", right: 8, top: 8 }}
-          >
-            <CloseIcon />
+        <DialogTitle className="flex items-center justify-center">
+          <span className="font-semibold flex-1"> Bank Transfer</span>
+          <IconButton edge="end" onClick={onClose} aria-label="close">
+            <CloseIcon className="text-green-900 border-green-900 border-2 rounded-full" />
           </IconButton>
         </DialogTitle>
         <DialogContent>
           <div className="mb-4">
-            <div className="text-lg font-semibold mb-2">
+            <div className="text-lg font-bold mb-2">
               Make a Transfer of NGN 12,850 to:
             </div>
             <div className="mb-2">Name: Eriqueenah Grocery Store Credits</div>
             <div className="mb-2">Account Number: 0000000000</div>
             <div className="mb-2">Bank: Providus Bank</div>
             <Divider className="my-2" />
-            <div className="text-sm">
-              Note: Your order will be processed once payment is confirmed.
+            <div className="text-sm flex items-center w-full border-2 border-green-900 justify-center ">
+              <Button color="success" className="text-green-900">
+                Copy Account Number
+              </Button>
             </div>
           </div>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={onClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={onClose} color="primary">
-            Ok
-          </Button>
-        </DialogActions>
+        <div className="flex justify-center items-center w-full mb-6">
+          <button
+            className="bg-green-900 px-4 py-2 border-green-900 border-2 rounded-lg"
+            onClick={onClose}
+            color="primary"
+          >
+            proceed
+          </button>
+        </div>
       </Dialog>
     </React.Fragment>
   );
