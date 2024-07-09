@@ -29,7 +29,7 @@ const Header = () => {
           aria-label="Global"
           className="md:flex w-full h-full items-center justify-between text-base pt-1 px-20 font-sans font-medium"
         >
-          <Link to="/" className="logo flex lg:flex-1">
+          <Link to="/Checkout" className="logo flex lg:flex-1">
             <motion.img
               whileTap={{ scale: 0.9 }}
               alt="Eriqueenah Logo"

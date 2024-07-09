@@ -15,6 +15,7 @@ import {
   Button,
   CardMedia,
   CardActions,
+  Link,
 } from "@mui/material";
 import redapple from "../../assets/fruits/redapple.png";
 import greenapple from "../../assets/fruits/greenapple.png";
@@ -39,7 +40,7 @@ import redgrape from "../../assets/fruits/redgrape.png";
 
 const useStyles = styled({
   dialogPaper: {
-    backgroundColor: "transparent", // or any other color you prefer
+    backgroundColor: "transparent",
   },
 });
 
@@ -335,16 +336,25 @@ const Fruits = () => {
             </CardContent>
             <CardActions>
               <ButtonGroup
-                className="buttongroup mt-2 flex w-full p-1"
+                className="buttongroup mt-2 flex w-max p-1"
                 aria-label="Basic button group"
               >
                 <Button>-</Button>
                 <Button>5</Button>
                 <Button>+</Button>
+
+                <Button
+                  sx={{
+                    fontSize: "10px",
+                    padding: "8px 16px",
+                    "&:hover": {
+                      backgroundColor: green[900],
+                    },
+                  }}
+                >
+                  Add 20 item(s) to cart
+                </Button>
               </ButtonGroup>
-              <Button variant="contained" href="#contained-buttons">
-                Add items to cart
-              </Button>
             </CardActions>
           </Card>
         </Dialog>

@@ -19,6 +19,7 @@
   border-top-left-radius: 1px;
   border-top-right-radius: 1px;
   font-weight: 500;
+ 
 }
 
 .buttongroup button:nth-of-type(2) {
@@ -26,10 +27,15 @@
   color: #fff;
 }
 
+.buttongroup button:nth-of-type(3) {
+  border-bottom-right-radius: 10px;
+  border: 1.5px solid #064F26;
+}
+
 .buttongroup button:nth-of-type(4) {
   background-color: #064F26;
   color: #fff;
-  margin-left: 2.2rem;
+  margin-left: 1.2rem;
   border-bottom-left-radius: 10px;
 }
 

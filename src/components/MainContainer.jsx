@@ -1,7 +1,7 @@
 import React from "react";
 import Fruits from "./products/Fruits";
 import Roots from "./products/Roots";
-import Vegetables from "./products/Vegetables/Vegetables";
+import Vegetables from "./products/Vegetables";
 
 const MainContainer = () => {
   return (
