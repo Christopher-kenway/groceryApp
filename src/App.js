@@ -1,5 +1,5 @@
 import React from "react"
-import { Header, MainContainer} from "./components";
+import { Header, MainContainer, Content, Footer} from "./components";
 import { Route, Routes } from "react-router-dom";
 import {AnimatePresence} from 'framer-motion'
 import Checkout from "./components/Checkout/Checkout";
@@ -17,6 +17,8 @@ function App() {
         <Route path="/Checkout" element={<Checkout/>} />
       </Routes>
     </main>
+    <Content />
+    <Footer/>
     </div>
     </AnimatePresence>
   );

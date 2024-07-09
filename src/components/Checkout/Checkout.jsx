@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Divider from "@mui/material/Divider";
+
 import {
   Button,
   Badge,
@@ -43,8 +44,6 @@ const PaymentMethodDialog = ({
   const handlePaymentMethodChange = (event) => {
     setSelectedPaymentMethod(event.target.value);
   };
-  const [openDebitDialog, setOpenDebitDialog] = React.useState(false);
-  const [openTransferDialog, setOpenTransferDialog] = React.useState(false);
 
   return (
     <React.Fragment>

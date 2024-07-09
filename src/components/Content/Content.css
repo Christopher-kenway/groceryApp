@@ -1,0 +1,32 @@
+.carousel{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel .control-dots {
+  display: flex;
+  padding: 5px;
+  gap: 0.5rem;
+  z-index: 99;
+  border-radius: 12px;
+  width: max-content;
+  gap: 2px;
+  background-color: #064F2633;
+
+ 
+}
+
+.carousel .control-dots .dot {
+  border: 1px solid rgb(0, 0, 0);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.carousel .control-dots .dot.selected {
+  background-color:  #064F26; 
+}
