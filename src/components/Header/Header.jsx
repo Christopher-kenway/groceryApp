@@ -17,19 +17,21 @@ import heroSvg from "../../assets/heroSvg.svg";
 import "./Header.css";
 
 const Header = () => {
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const handleOpen = () => setOpen((cur) => !cur);
+  const handleOpen = () => setIsOpen(!isOpen);
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   return (
     <>
-      <header className="z-50 inset-x-0 top-0 p-6">
+      <header className=" inset-x-0 top-0 p-6">
         {/* Desktop & Tablet */}
         <nav
           aria-label="Global"
-          className="md:flex w-full h-full items-center justify-between text-base pt-1 px-20 font-sans font-medium"
+          className="hidden md:flex w-full h-full items-center justify-between text-base pt-1 px-4 lg:px-20 font-sans font-medium"
         >
-          <Link to="/Checkout" className="logo flex lg:flex-1">
+          <Link to="/" className="logo flex lg:flex-1">
             <motion.img
               whileTap={{ scale: 0.9 }}
               alt="Eriqueenah Logo"
@@ -38,13 +40,12 @@ const Header = () => {
             />
           </Link>
 
-          <div className="searchbox hidden drop-shadow-sm lg:flex flex-1">
+          <div className="searchbox hidden lg:flex flex-1">
             <form onSubmit={""} className="relative">
               <input
                 value={""}
-                // onChange={(e) => setSearchText(e.target.value)}
                 type="text"
-                className="searchbar block w-full p-4 ps-10 text-sm pl-10 pr-4 py-2 border-2 border-green-900 rounded-lg focus:border-green-900"
+                className="searchbar block w-full ps-10 text-sm pl-10 pr-4 py-2 border-2 border-green-900 rounded-lg focus:border-green-900"
                 placeholder="Search products"
               />
               <div className="absolute left-0 top-0 bottom-0 flex items-center pl-3">
@@ -66,7 +67,7 @@ const Header = () => {
             </form>
           </div>
 
-          <div className="navicon__link hidden items-center space-x-4 gap-2 relative drop-shadow-md lg:flex">
+          <div className="navicon__link hidden items-center space-x-4 gap-2 relative lg:flex">
             <motion.button
               whileTap={{ scale: 0.9 }}
               className="flex items-center text-green-800 cursor-pointer"
@@ -110,94 +111,191 @@ const Header = () => {
             <Link to="">
               <button
                 onClick={handleOpen}
-                className="px-4 py-2 border-2 bg-green-900 rounded-lg focus:border-green-900 drop-shadow-sm text-white"
+                className="px-4 py-2 border-2 bg-green-900 rounded-lg focus:border-green-900 text-white"
               >
                 SIGN IN
               </button>
-
-              <Dialog
-                open={open}
-                onClose={handleOpen}
-                className="bg-opacity-25 dialog"
-              >
-                <Card className=" mx-auto w-full max-w-[34rem] h-full rounded-sm">
-                  <CardContent className="cardcontent p-6 flex flex-col gap-5">
-                    <Link to="/">
-                      <Typography className="flex text-gray-200 font-thin cursor-pointer">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="size-5 mr-4 my-auto"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M15.75 19.5 8.25 12l7.5-7.5"
-                          />
-                        </svg>
-                        Back to shop
-                      </Typography>
-                    </Link>
-                    <Typography className="mb-6 text-gray-100 text-center text-xs font-normal">
-                      <img
-                        className="text-center h-8 my-9 mx-auto mt-16"
-                        src={signlogo}
-                      />
-                      Sign in with your Email Address and Password
-                    </Typography>
-                    <Input
-                      fullWidth
-                      placeholder="Email"
-                      size="medium"
-                      className="border-2 border-black rounded-lg mb-2 bg-white p-2"
-                    />
-                    <Input
-                      fullWidth
-                      placeholder="Password"
-                      size="medium"
-                      type="password"
-                      className="border-2 border-black rounded-lg mb-2 bg-white p-2"
-                    />
-                    <Typography
-                      variant="body2"
-                      className="text-white cursor-pointer"
-                      onClick={() => alert("Forgot password clicked!")}
-                    >
-                      Forgot password?
-                    </Typography>
-                    <button
-                      onClick={handleOpen}
-                      fullWidth
-                      className="bg-black hover:bg-gray-900 text-white p-2 font-sans rounded-md w-44 text-center mx-auto"
-                    >
-                      Continue
-                    </button>
-                    <Typography
-                      variant="small"
-                      className="mt-10 flex justify-center text-white text-xs font-light gap-3 my-auto items-center"
-                    >
-                      Don&apos;t have an account?
-                      <Typography
-                        component="a"
-                        href="#signup"
-                        className="ml-2 font-bold cursor-pointer text-white"
-                        onClick={handleOpen}
-                      >
-                        Sign up
-                      </Typography>
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Dialog>
             </Link>
           </div>
         </nav>
 
         {/* Mobile */}
-        <nav className="flex md:hidden w-full h-full"></nav>
+        <nav className="flex md:hidden w-full h-full items-center justify-between">
+          <button onClick={toggleMobileMenu} className="text-green-900">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 5.25h16.5M3.75 12h16.5m-16.5 6.75h16.5"
+              />
+            </svg>
+          </button>
+          <Link to="/Checkout" className="logo">
+            <motion.img
+              whileTap={{ scale: 0.9 }}
+              alt="Eriqueenah Logo"
+              src={Logo}
+              className="h-8 w-auto cursor-pointer"
+            />
+          </Link>
+          <Link to="">
+            <motion.button
+              onClick={handleOpen}
+              whileTap={{ scale: 0.9 }}
+              className="px-4 py-2 bg-green-900 rounded-lg text-white"
+            >
+              SIGN IN
+            </motion.button>
+          </Link>
+        </nav>
+
+        <Dialog
+          open={isMobileMenuOpen}
+          onClose={toggleMobileMenu}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+        >
+          <div className="bg-white rounded-lg p-4 w-64">
+            <button onClick={toggleMobileMenu} className="text-green-900 mb-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="h-6 w-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            <ul className="space-y-4">
+              <li>
+                <Link
+                  to="/Checkout"
+                  onClick={toggleMobileMenu}
+                  className="text-green-900"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/Checkout"
+                  onClick={toggleMobileMenu}
+                  className="text-green-900"
+                >
+                  Shop
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/Checkout"
+                  onClick={toggleMobileMenu}
+                  className="text-green-900"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/Checkout"
+                  onClick={toggleMobileMenu}
+                  className="text-green-900"
+                >
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </Dialog>
+
+        <Dialog
+          open={isOpen}
+          onClose={handleOpen}
+          className="bg-opacity-25 dialog"
+        >
+          <Card className=" mx-auto w-full max-w-[34rem] h-full rounded-sm">
+            <CardContent className="cardcontent p-6 flex flex-col gap-5">
+              <Link to="/">
+                <Typography className="flex text-gray-200 font-thin cursor-pointer">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-5 mr-4 my-auto"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15.75 19.5 8.25 12l7.5-7.5"
+                    />
+                  </svg>
+                  Back to shop
+                </Typography>
+              </Link>
+              <Typography className="mb-6 text-gray-100 text-center text-xs font-normal">
+                <img
+                  className="text-center h-8 my-9 mx-auto mt-16"
+                  src={signlogo}
+                />
+                Sign in with your Email Address and Password
+              </Typography>
+              <Input
+                fullWidth
+                placeholder="Email"
+                size="medium"
+                className="border-2 border-black rounded-lg mb-2 bg-white p-2"
+              />
+              <Input
+                fullWidth
+                placeholder="Password"
+                size="medium"
+                type="password"
+                className="border-2 border-black rounded-lg mb-2 bg-white p-2"
+              />
+              <Typography
+                variant="body2"
+                className="text-white cursor-pointer"
+                onClick={() => alert("Forgot password clicked!")}
+              >
+                Forgot password?
+              </Typography>
+              <button
+                onClick={handleOpen}
+                fullWidth
+                className="bg-black hover:bg-gray-900 text-white p-2 font-sans rounded-md w-44 text-center mx-auto"
+              >
+                Continue
+              </button>
+              <Typography
+                variant="small"
+                className="mt-10 flex justify-center text-white text-xs font-light gap-3 my-auto items-center"
+              >
+                Don&apos;t have an account?
+                <Typography
+                  component="a"
+                  href="#signup"
+                  className="ml-2 font-bold cursor-pointer text-white"
+                  onClick={handleOpen}
+                >
+                  Sign up
+                </Typography>
+              </Typography>
+            </CardContent>
+          </Card>
+        </Dialog>
       </header>
 
       <div
@@ -206,12 +304,12 @@ const Header = () => {
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url(${heroSvg})`,
         }}
       >
-        <div className="max-w-5xl px-20 lg:px-20 sm:py-32 lg:py-50">
+        <div className="max-w-5xl px-4 sm:px-10 lg:px-20 py-8 sm:py-20 lg:py-32">
           <div className="herosection-info text-left">
-            <h1 className="text-7xl font-normal tracking-wider text-gray-100 sm:text-5xl">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-normal tracking-wider text-gray-100">
               Welcome to Eriqueenah's Green Grocery Shop
             </h1>
-            <p className="max-w-96 mt-6 text-3xl leading-8 text-gray-100 font-sans font-medium">
+            <p className="max-w-full sm:max-w-96 mt-4 sm:mt-6 text-lg sm:text-2xl lg:text-3xl leading-6 sm:leading-8 text-gray-100 font-sans font-medium">
               Your trusted one-way stop for 100% Organic & Fresh Fruits
             </p>
           </div>

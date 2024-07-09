@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Divider from "@mui/material/Divider";
-
+import { motion } from "framer-motion";
 import {
   Button,
   Badge,
@@ -25,6 +25,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import MoneyIcon from "@mui/icons-material/Money";
+import { frame } from "framer-motion";
+import { green } from "@mui/material/colors";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -158,13 +160,23 @@ const Checkout = () => {
   };
 
   return (
-    <div className="p-6 md:p-12 lg:p-24">
-      <div className="flex items-center justify-between px-2 mx-auto">
-        <h2 className="text-2xl font-bold mb-6">Order Summary</h2>
-        <div className="flex gap-6 items-center justify-center">
-          <h7 className="">My Cart</h7>
+    <div className="fixed top-0 left-0 w-[50%] md:w-[375px] h-screen p-6 md:p-12 lg:p-6 drop-shadow-md bg-white z-[101] overflow-y-scroll">
+      <div className="w-full flex items-center p-4 mx-auto">
+        <h2 className="text-md font-bold mr-24">Order Summary</h2>
+        <div className="flex items-center justify-center gap-3">
+          <h7 className="text-sm">My Cart</h7>
           <IconButton aria-label="cart">
-            <StyledBadge className="mr-4" badgeContent={3} color="secondary">
+            <StyledBadge
+              className="mr-2"
+              badgeContent={3}
+              sx={{
+                color: green[900],
+                "&.Mui-checked": {
+                  color: green[900],
+                },
+              }}
+              color="success"
+            >
               <ShoppingCartIcon />
             </StyledBadge>
           </IconButton>
@@ -184,7 +196,7 @@ const Checkout = () => {
         <div className="p-2 border-b-2 border-gray-200">
           <div className="p-2 flex justify-between bg-green-300 rounded-l-lg rounded-r-lg">
             <div>
-              <p className="font-bold ">Strawberry X 20</p>
+              <p className="font-bold">Strawberry X 20</p>
               <p className="text-sm">Uncut</p>
               <p className="text-sm">Frozen</p>
             </div>
@@ -262,7 +274,7 @@ const Checkout = () => {
           <p className="text-green-900">₦ 12,850</p>
         </div>
       </div>
-      <div className="mt-6">
+      <div className="mt-3">
         <Button
           fullWidth
           variant="contained"

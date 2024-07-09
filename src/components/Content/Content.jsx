@@ -9,17 +9,17 @@ const Content = () => {
   return (
     <div>
       <div
-        className="mt-3 px-6 lg:py-10 relative isolate bg-cover bg-no-repeat border-t-2 border-b-2 border-green-900"
+        className="mt-3 px-6 lg:py-10 relative isolate bg-cover bg-no-repeat border-t-2 border-b-2 border-green-900 z-0"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url(${content})`,
         }}
       >
-        <div className="px-20 lg:px-20 sm:py-32 lg:py-50">
+        <div className="px-4 sm:px-10 lg:px-20 py-8 sm:py-20 lg:py-32">
           <div className="herosection-info text-left">
-            <h1 className="text-7xl font-normal tracking-wider text-gray-100 sm:text-5xl">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-normal tracking-wider text-gray-100">
               Eriqueenah's Online Green Grocery Shop
             </h1>
-            <p className="mt-6 text-2xl leading-8 text-gray-100 font-sans font-medium">
+            <p className="mt-4 sm:mt-6 text-lg sm:text-2xl leading-6 sm:leading-8 text-gray-100 font-sans font-medium">
               Eriqueenah is the leading online organic grocery sale and delivery
               service in Nigeria. Order online from hundreds of fruits and
               vegetables and receive same-day free delivery. Visit your favorite
@@ -37,12 +37,13 @@ const Content = () => {
           </div>
         </div>
       </div>
+
       <Carousel
         showThumbs={false}
         showStatus={false}
         autoPlay
         infiniteLoop
-        interval={5000}
+        interval={8000}
         className="mt-16 mx-auto"
       >
         <div>

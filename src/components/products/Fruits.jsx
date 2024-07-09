@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import "./Products.css";
 import Chip from "@mui/material/Chip";
@@ -15,7 +16,6 @@ import {
   Button,
   CardMedia,
   CardActions,
-  Link,
 } from "@mui/material";
 import redapple from "../../assets/fruits/redapple.png";
 import greenapple from "../../assets/fruits/greenapple.png";
@@ -244,12 +244,14 @@ const Fruits = () => {
               <p className="text-gray-900 font-normal font-sans">
                 {product.price}
               </p>
-              <button
-                onClick={() => handleOpen(product)}
-                className="mt-4 px-4 py-2 bg-green-900 text-white text-sm font-semibold font-sans rounded hover:bg-green-800"
-              >
-                ADD TO CART
-              </button>
+              <Link to="/">
+                <button
+                  onClick={() => handleOpen(product)}
+                  className="mt-4 px-4 py-2 bg-green-900 text-white text-sm font-semibold font-sans rounded hover:bg-green-800"
+                >
+                  ADD TO CART
+                </button>
+              </Link>
             </div>
           </div>
         ))}
@@ -342,18 +344,19 @@ const Fruits = () => {
                 <Button>-</Button>
                 <Button>5</Button>
                 <Button>+</Button>
-
-                <Button
-                  sx={{
-                    fontSize: "10px",
-                    padding: "8px 16px",
-                    "&:hover": {
-                      backgroundColor: green[900],
-                    },
-                  }}
-                >
-                  Add 20 item(s) to cart
-                </Button>
+                <Link to="/">
+                  <Button
+                    sx={{
+                      fontSize: "10px",
+                      padding: "8px 16px",
+                      "&:hover": {
+                        backgroundColor: green[900],
+                      },
+                    }}
+                  >
+                    Add item(s) to cart
+                  </Button>
+                </Link>
               </ButtonGroup>
             </CardActions>
           </Card>
