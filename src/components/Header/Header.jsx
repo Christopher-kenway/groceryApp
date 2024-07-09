@@ -17,6 +17,9 @@ import heroSvg from "../../assets/heroSvg.svg";
 import "./Header.css";
 import { useStateValue } from "../../context/StateProvider";
 import { actionType } from "../../context/reducer";
+import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -79,41 +82,23 @@ const Header = () => {
           <div className="navicon__link hidden items-center space-x-4 gap-2 relative lg:flex">
             <motion.button
               whileTap={{ scale: 0.9 }}
-              className="flex items-center text-green-800 cursor-pointer"
+              className="flex items-center text-green-900 cursor-pointer"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="size-9"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M11.54 22.351l.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742Z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <ArrowDropDownIcon className="mt-5" />
+              <PlaceOutlinedIcon style={{ fontSize: "2.5rem" }} />
+              <ArrowDropDownIcon
+                style={{ fontSize: "2rem" }}
+                className="mt-5 text-green-900"
+              />
             </motion.button>
             <motion.button
               whileTap={{ scale: 0.9 }}
               className="flex items-center text-green-800 hover:text-green-900 cursor-pointer"
               onClick={showCart}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-9"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
-                />
-              </svg>
+              <ShoppingCartOutlinedIcon
+                style={{ fontSize: "2.3rem" }}
+                className="text-green-900"
+              />
             </motion.button>
           </div>
 

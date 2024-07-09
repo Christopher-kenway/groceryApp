@@ -149,17 +149,9 @@ const Checkout = () => {
       payload: !cartShow,
     });
   };
-  const [open, setOpen] = useState(false);
+
   const [paymentDialogOpen, setPaymentDialogOpen] = useState(false);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("debit");
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   const handlePaymentDialogOpen = () => {
     setPaymentDialogOpen(true);
