@@ -161,7 +161,7 @@ const Header = () => {
           <div className="bg-white rounded-lg p-4 w-64">
             <button
               onClick={toggleMobileMenu}
-              className="text-green-900 mb-4 item-end justify-end w-full flex "
+              className="text-green-900 mb-4 item-end justify-end w-full flex"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
