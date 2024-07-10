@@ -74,13 +74,13 @@ const PaymentMethodDialog = ({
         sx: { borderRadius: "15px" },
       }}
     >
-      <Card>
+      <Card className="w-full sm:max-w-md">
         <CardContent className="flex flex-col mx-auto w-full h-full">
           <DialogTitle
-            className="flex items-center justify-between gap-28"
+            className="flex items-center justify-between gap-4 sm:gap-28"
             sx={{ margin: 0 }}
           >
-            <p className="text-md font-medium ">Payment Method</p>
+            <p className="text-md font-medium">Payment Method</p>
             <IconButton
               edge="end"
               color="inherit"
@@ -90,25 +90,21 @@ const PaymentMethodDialog = ({
               <CloseIcon />
             </IconButton>
           </DialogTitle>
-          <FormControl className="h-full w-full mx-auto">
+          <FormControl className="flex-1 w-full">
             <RadioGroup
               aria-label="payment method"
               name="paymentMethod"
               value={selectedPaymentMethod}
               onChange={handlePaymentMethodChange}
-              className="gap-10 p-3"
+              className="gap-4 sm:gap-10 p-3"
             >
               <FormControlLabel
                 value="debit"
                 control={<Radio color="success" />}
                 label={
-                  <div className="flex justify-between items-center gap-20">
-                    <div className="mr-4 px-1 py-2 flex items-center">
-                      <span className="text-sm font-medium mr-48 ">
-                        Add Debit card
-                      </span>
-                      <CreditCardIcon className="" />
-                    </div>
+                  <div className="flex items-center gap-10 sm:gap-36">
+                    <span className="text-sm font-medium">Add Debit card</span>
+                    <CreditCardIcon />
                   </div>
                 }
                 className="border-b-2 border-gray-700"
@@ -119,13 +115,9 @@ const PaymentMethodDialog = ({
                 value="bank"
                 control={<Radio color="success" />}
                 label={
-                  <div className="flex w-full items-center">
-                    <div className="mr-4  px-1 py-2 flex items-center">
-                      <span className="text-sm font-medium mr-48">
-                        Bank Transfer
-                      </span>
-                      <AccountBalanceIcon className="ml-2" />
-                    </div>
+                  <div className="flex items-center gap-10 sm:gap-36">
+                    <span className="text-sm font-medium">Bank Transfer</span>
+                    <AccountBalanceIcon />
                   </div>
                 }
                 className="border-b-2 border-gray-700"
@@ -136,11 +128,9 @@ const PaymentMethodDialog = ({
                 value="cash"
                 control={<Radio color="success" />}
                 label={
-                  <div className="flex w-full items-center">
-                    <div className="mr-4  px-1 py-2 flex items-center">
-                      <span className="text-sm font-medium mr-64 ">Cash</span>
-                      <MoneyIcon className="" />
-                    </div>
+                  <div className="flex items-center gap-16 sm:gap-48">
+                    <span className="text-sm font-medium">Cash</span>
+                    <MoneyIcon />
                   </div>
                 }
                 className="border-b-2 border-gray-700"
@@ -430,7 +420,7 @@ const Checkout = () => {
       initial={{ opacity: 0, x: 200 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 200 }}
-      className="fixed top-0 left-0 w-full md:w-[50%] h-screen p-6 md:p-12 lg:p-6 drop-shadow-md bg-white z-[101] overflow-y-scroll"
+      className="fixed top-0 left-0 w-full md:w-[50%] h-full p-6 md:p-12 lg:p-6 drop-shadow-md bg-white z-[101] overflow-y-scroll"
     >
       <div className="w-full flex items-center justify-between p-4 mx-auto">
         <h2 className="text-md font-bold mr-24">Order Summary</h2>
