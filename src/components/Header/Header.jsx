@@ -56,10 +56,14 @@ const Header = () => {
           </Link>
 
           <div className="searchbox hidden lg:flex flex-1">
-            <form onSubmit={""} className="relative">
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              className="relative w-[70%]"
+            >
               <input
                 value={""}
                 type="text"
+                onChange={(e) => {}}
                 className="searchbar block w-full ps-10 text-sm pl-10 pr-4 py-2 border-2 border-green-900 rounded-lg focus:border-green-900"
                 placeholder="Search products"
               />
@@ -70,7 +74,7 @@ const Header = () => {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="size-5"
+                  className="w-5 h-5"
                 >
                   <path
                     strokeLinecap="round"
@@ -107,12 +111,19 @@ const Header = () => {
 
           <div className="navauth hidden lg:flex lg:flex-1 lg:justify-end">
             <Link to="">
-              <button
+              <Button
+                sx={{
+                  backgroundColor: "#064F26",
+                  color: "#fff",
+                  "&:hover": {
+                    backgroundColor: "#046A38",
+                  },
+                }}
                 onClick={handleOpen}
                 className="px-4 py-2 border-2 bg-green-900 rounded-lg focus:border-green-900 text-white"
               >
                 SIGN IN
-              </button>
+              </Button>
             </Link>
           </div>
         </nav>
