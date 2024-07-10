@@ -249,7 +249,7 @@ const PaymentMethodDialog = ({ open, onClose }) => {
       >
         <DialogTitle className="flex items-center justify-center">
           <span className="font-semibold flex-1"> Bank Transfer</span>
-          <IconButton edge="end" onClick={onClose} aria-label="close">
+          <IconButton onClick={onClose} aria-label="close">
             <CloseIcon className="text-green-900 border-green-900 border-2 rounded-full" />
           </IconButton>
         </DialogTitle>

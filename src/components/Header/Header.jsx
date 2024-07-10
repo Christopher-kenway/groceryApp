@@ -81,7 +81,7 @@ const Header = () => {
             </form>
           </div>
 
-          <div className="navicon__link hidden items-center space-x-4 gap-2 relative lg:flex">
+          <div className="navicon__link items-center space-x-4 gap-2 relative lg:flex">
             <motion.button
               whileTap={{ scale: 0.9 }}
               className="flex items-center text-green-900 cursor-pointer"
@@ -142,6 +142,16 @@ const Header = () => {
               className="h-8 w-auto cursor-pointer"
             />
           </Link>
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            className="flex items-center text-green-800 hover:text-green-900 cursor-pointer"
+            onClick={showCart}
+          >
+            <ShoppingCartOutlinedIcon
+              style={{ fontSize: "2rem" }}
+              className="text-green-900"
+            />
+          </motion.button>
           <Link to="">
             <motion.button
               onClick={handleOpen}
