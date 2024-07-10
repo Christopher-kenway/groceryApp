@@ -17,18 +17,18 @@ import {
   CardMedia,
   CardActions,
 } from "@mui/material";
-import springionion from "../../assets/vegetables/springonion.png";
-import broccoli from "../../assets/vegetables/broccoli.png";
-import brusel from "../../assets/vegetables/brusel.png";
-import cabbage from "../../assets/vegetables/cabbage.png";
-import eggplant from "../../assets/vegetables/eggplant.png";
-import avocado from "../../assets/vegetables/avocado.png";
-import lettuce from "../../assets/vegetables/lettuce.png";
-import celery from "../../assets/vegetables/celery.png";
-import mushroom from "../../assets/vegetables/mushroom.png";
-import mint from "../../assets/vegetables/mint.png";
-import okra from "../../assets/vegetables/okra.png";
-import peas from "../../assets/vegetables/peas.png";
+import carrot from "../../assets/roots/carrot.png";
+import carrot2 from "../../assets/roots/carrot2.png";
+import cassava from "../../assets/roots/cassava.png";
+import cocoyam from "../../assets/roots/cocoyam.png";
+import garlic from "../../assets/roots/garlic.png";
+import ginger from "../../assets/roots/ginger.png";
+import sweetp from "../../assets/roots/sweetp.png";
+import tulip from "../../assets/roots/tulip.png";
+import tumeric from "../../assets/roots/tumeric.png";
+import yam from "../../assets/roots/yam.png";
+import onion from "../../assets/roots/onion.png";
+import potato from "../../assets/roots/potato.png";
 import { useStateValue } from "../../context/StateProvider";
 import { actionType } from "../../context/reducer";
 
@@ -52,98 +52,98 @@ const Roots = () => {
   const products = [
     {
       id: 1,
-      name: "Spring onion",
+      name: "Irish Potato",
       href: "#",
-      price: "400 NGN",
-      imageSrc: springionion,
-      imageAlt: "springonion",
+      price: "250 NGN",
+      imageSrc: potato,
+      imageAlt: "Irish Potato",
     },
     {
       id: 2,
-      name: "Egg plant",
+      name: "Tulip",
       href: "#",
       price: "3050 NGN",
-      imageSrc: eggplant,
-      imageAlt: "eggplant",
+      imageSrc: tulip,
+      imageAlt: "tulip",
     },
     {
       id: 3,
-      name: "Broccoli",
+      name: "carrots",
       href: "#",
       price: "1500 NGN",
-      imageSrc: broccoli,
-      imageAlt: "Bbroccoli",
+      imageSrc: carrot,
+      imageAlt: "carrot",
     },
     {
       id: 4,
-      name: "Okra",
+      name: "carrots",
       href: "#",
       price: "100 NGN",
-      imageSrc: okra,
-      imageAlt: "Okra",
+      imageSrc: carrot2,
+      imageAlt: "carrots",
     },
     {
       id: 5,
-      name: "Cabbage",
+      name: "Cocoyam",
       href: "#",
       price: "3000 NGN",
-      imageSrc: cabbage,
-      imageAlt: "Cabbage",
+      imageSrc: cocoyam,
+      imageAlt: "Cocoyam",
     },
     {
       id: 6,
-      name: "Mushroom",
+      name: "Yam",
       href: "#",
       price: "200 NGN",
-      imageSrc: mushroom,
+      imageSrc: yam,
     },
     {
       id: 7,
-      name: "lettuce",
+      name: "Ginger",
       href: "#",
       price: "350 NGN",
-      imageSrc: lettuce,
-      imageAlt: "lettuce",
+      imageSrc: ginger,
+      imageAlt: "Ginger",
     },
     {
       id: 8,
-      name: "Crawling Peas",
+      name: "Tumeric",
       href: "#",
       price: "1950 NGN",
-      imageSrc: peas,
-      imageAlt: "Crawling Peas",
+      imageSrc: tumeric,
+      imageAlt: "Tumeric",
     },
     {
       id: 9,
-      name: "Mint",
+      name: "Onions",
       href: "#",
       price: "3000 NGN",
-      imageSrc: mint,
-      imageAlt: "Mint",
+      imageSrc: onion,
+      imageAlt: "Onion",
     },
     {
       id: 10,
-      name: "Celery",
+      name: "cassava",
       href: "#",
       price: "2700 NGN",
-      imageSrc: celery,
-      imageAlt: "Celery",
+      imageSrc: cassava,
+      imageAlt: "cassava",
     },
     {
       id: 11,
-      name: "Brussel Sprouts",
+      name: "Sweet Potatoes",
       href: "#",
       price: "300 NGN",
-      imageSrc: brusel,
-      imageAlt: "Brussel Sprouts",
+      imageSrc: sweetp,
+      imageAlt: "Sweet Potatoes",
     },
     {
       id: 12,
-      name: "Avocado",
+      name: "garlic",
       href: "#",
       price: "300 NGN",
-      imageSrc: avocado,
-      imageAlt: "avocado",
+      imageSrc: garlic,
+      imageAlt: "garlic",
     },
 
     // More products...
@@ -160,8 +160,8 @@ const Roots = () => {
   return (
     <div className="bg-green-900">
       <div className="mx-auto mt-5 max-w-2xl px-4 py-16 sm:px-6 sm:py-6 lg:max-w-7xl lg:px-4 w-full">
-        <h2 className="text-2xl font-bold tracking-tight text-gray-900 mb-9 mt-10">
-          Roots
+        <h2 className="text-2xl font-medium tracking-tight text-gray-200 mb-9 mt-10">
+          Roots and Tubers
         </h2>
         <div className="grid grid-cols-1 gap-x-12 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {products.map((product) => (
