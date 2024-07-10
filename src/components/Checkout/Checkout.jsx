@@ -188,21 +188,15 @@ const PaymentMethodDialog = ({ open, onClose }) => {
         onClose={handleClose}
         PaperProps={{ style: { borderRadius: 15 } }}
       >
-        <DialogTitle>
-          Add Card
-          <IconButton
-            edge="end"
-            color="inherit"
-            onClick={handleClose}
-            aria-label="close"
-            style={{ position: "absolute", right: 8, top: 8 }}
-          >
-            <CloseIcon />
+        <DialogTitle className="flex items-center justify-center">
+          <span className="font-semibold flex-1"> Add Card</span>
+          <IconButton onClick={handleClose} aria-label="close">
+            <CloseIcon className="text-green-900 border-green-900 border-2 rounded-full" />
           </IconButton>
         </DialogTitle>
         <DialogContent>
-          <div className="mb-4 text-green-800 font-semibold">
-            Amount Due: ₦12,850
+          <div className="mb-4 font-semibold text-lg">
+            <span className="text-green-900">Amount Due:</span> ₦12,850
           </div>
           <form>
             <div className="mb-4">
@@ -211,7 +205,7 @@ const PaymentMethodDialog = ({ open, onClose }) => {
               </label>
               <input
                 type="text"
-                className="w-full border border-gray-300 rounded-lg p-2"
+                className="w-full border border-gray-800 rounded-lg p-2"
                 placeholder="Full Name"
               />
             </div>
@@ -221,7 +215,7 @@ const PaymentMethodDialog = ({ open, onClose }) => {
               </label>
               <input
                 type="text"
-                className="w-full border border-gray-300 rounded-lg p-2"
+                className="w-full border border-gray-800 rounded-lg p-2"
                 placeholder="0000 0000 0000 0000"
               />
             </div>
@@ -232,7 +226,7 @@ const PaymentMethodDialog = ({ open, onClose }) => {
                 </label>
                 <input
                   type="text"
-                  className="w-full border border-gray-300 rounded-lg p-2"
+                  className="w-full border border-gray-800 rounded-lg p-2"
                   placeholder="MM/YY"
                 />
               </div>
@@ -240,7 +234,7 @@ const PaymentMethodDialog = ({ open, onClose }) => {
                 <label className="block text-sm font-medium mb-1">CVV</label>
                 <input
                   type="text"
-                  className="w-full border border-gray-300 rounded-lg p-2"
+                  className="w-full border border-gray-800 rounded-lg p-2"
                   placeholder="000"
                 />
               </div>
@@ -248,12 +242,16 @@ const PaymentMethodDialog = ({ open, onClose }) => {
           </form>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleClose} color="primary">
-            Pay
-          </Button>
+          <div className="flex items-center justify-center w-full">
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              className="bg-green-900 px-4 py-2 border-green-900 border-2 rounded-lg cursor-pointer w-64 mb-5"
+              onClick={handleClose}
+              color="primary"
+            >
+              Pay
+            </motion.button>
+          </div>
         </DialogActions>
       </Dialog>
 
@@ -287,13 +285,14 @@ const PaymentMethodDialog = ({ open, onClose }) => {
           </div>
         </DialogContent>
         <div className="flex justify-center items-center w-full mb-6">
-          <button
-            className="bg-green-900 px-4 py-2 border-green-900 border-2 rounded-lg"
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            className="bg-green-900 px-4 py-2 border-green-900 border-2 rounded-lg cursor-pointer"
             onClick={handleClose}
             color="primary"
           >
             proceed
-          </button>
+          </motion.button>
         </div>
       </Dialog>
     </React.Fragment>
