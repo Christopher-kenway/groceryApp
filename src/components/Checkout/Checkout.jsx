@@ -482,68 +482,6 @@ const Checkout = () => {
         selectedPaymentMethod={selectedPaymentMethod}
         setSelectedPaymentMethod={handlePaymentMethodChange}
       />
-
-      <Dialog
-        aria-labelledby="responsive-dialog-title"
-        open={openDebitDialog}
-        onClose={handlePaymentDialogClose}
-        PaperProps={{
-          sx: { borderRadius: "15px" },
-        }}
-      >
-        <Card>
-          <CardContent className="flex flex-col mx-auto w-full h-full">
-            <DialogTitle
-              className="flex items-center justify-between gap-28"
-              sx={{ margin: 0 }}
-            >
-              <p className="text-md font-medium ">Add debit card</p>
-              <IconButton
-                edge="end"
-                color="inherit"
-                onClick={handlePaymentDialogClose}
-                aria-label="close"
-              >
-                <CloseIcon />
-              </IconButton>
-            </DialogTitle>
-            <DialogContent dividers className="h-full w-full mx-auto">
-              {/* Debit card form goes here */}
-            </DialogContent>
-          </CardContent>
-        </Card>
-      </Dialog>
-
-      <Dialog
-        aria-labelledby="responsive-dialog-title"
-        open={openTransferDialog}
-        onClose={handlePaymentDialogClose}
-        PaperProps={{
-          sx: { borderRadius: "15px" },
-        }}
-      >
-        <Card>
-          <CardContent className="flex flex-col mx-auto w-full h-full">
-            <DialogTitle
-              className="flex items-center justify-between gap-28"
-              sx={{ margin: 0 }}
-            >
-              <p className="text-md font-medium ">Bank Transfer</p>
-              <IconButton
-                edge="end"
-                color="inherit"
-                onClick={handlePaymentDialogClose}
-                aria-label="close"
-              >
-                <CloseIcon />
-              </IconButton>
-            </DialogTitle>
-            <DialogContent dividers className="h-full w-full mx-auto">
-              {/* Bank transfer form goes here */}
-            </DialogContent>
-          </CardContent>
-        </Card>
-      </Dialog>
     </motion.div>
   );
 };
