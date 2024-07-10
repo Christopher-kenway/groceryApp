@@ -33,6 +33,7 @@ import { motion } from "framer-motion";
 import { green } from "@mui/material/colors";
 import { useStateValue } from "../../context/StateProvider";
 import { actionType } from "../../context/reducer";
+import checkoutlogo from "../../assets/checkoutlogo.png";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -340,56 +341,52 @@ const ReceiptDialog = ({ open, onClose }) => (
   <Dialog
     open={open}
     onClose={onClose}
-    PaperProps={{ style: { borderRadius: 15 } }}
+    PaperProps={{ style: { borderRadius: 15, backgroundColor: "#EFEFEF" } }}
   >
-    <div className="py-5 px-1 mx-auto">
-      <DialogTitle className="text-center ">
-        <Typography variant="h6">Eriqueenah Green Grocery Shop</Typography>
-        <Typography>Location: Lagos</Typography>
+    <div className="py-5 px-1 mx-auto sm:max-w-md">
+      <DialogTitle className="text-center">
+        <img className="h-16 mx-auto mb-5" src={checkoutlogo} alt="Logo" />
+        <Typography>
+          <h1 className="font-bold text-2xl">Location: Lagos</h1>
+        </Typography>
       </DialogTitle>
-      <DialogContent>
-        <div className="gap-1 w-full">
-          <div className="flex flex-col w-full">
-            {" "}
-            <Typography className="w-full flex flex-row items-center justify-between">
-              <h1 className="font-bold"></h1>Strawberry (20)
-              <h1 className="text-green-900 font-bold">₦6,000</h1>
-            </Typography>
-            <Typography>
-              {" "}
-              <h1 className="font-bold">Eggplant (2) - ₦6,100</h1>
-            </Typography>
-            <Typography>
-              {" "}
-              <p className="font-bold">Banana (5) - ₦750</p>
-            </Typography>
+      <DialogContent className="px-4">
+        <div className="gap-1">
+          <div className="flex justify-between font-semibold">
+            <p>Strawberry (20)</p>
+            <p className="text-green-800">₦ 6000</p>
           </div>
-          <div>
-            <Typography>
-              <h1 className="font-bold">Name: Florence A</h1>
-            </Typography>
-            <Typography>
-              <h1 className="font-bold">
-                Address: no 2 olusegun street, Lagos
-              </h1>
-            </Typography>
+          <div className="flex justify-between font-semibold">
+            <p>Eggplant (2)</p>
+            <p className="text-green-800">₦ 6100</p>
           </div>
-
-          <div className="pt-10 w-full">
-            <Button
-              fullWidth
-              sx={{
-                backgroundColor: "#064F26",
-                color: "#fff",
-                "&:hover": {
-                  backgroundColor: "#046A38",
-                },
-              }}
-              onClick={onClose}
-            >
-              Download
-            </Button>
+          <div className="flex justify-between font-semibold">
+            <p>Banana (5)</p>
+            <p className="text-green-800">₦ 750</p>
           </div>
+        </div>
+        <div className="mt-4">
+          <Typography>
+            <h1 className="font-bold">Name: Florence A</h1>
+          </Typography>
+          <Typography>
+            <h1 className="font-bold">Address: no 2 olusegun street, Lagos</h1>
+          </Typography>
+        </div>
+        <div className="mt-6">
+          <Button
+            fullWidth
+            sx={{
+              backgroundColor: "#064F26",
+              color: "#fff",
+              "&:hover": {
+                backgroundColor: "#046A38",
+              },
+            }}
+            onClick={onClose}
+          >
+            Download
+          </Button>
         </div>
       </DialogContent>
     </div>
