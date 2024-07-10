@@ -204,7 +204,7 @@ const Header = () => {
                 <Link
                   to="/"
                   onClick={toggleMobileMenu}
-                  className="font-semibold flex w-full item-center justify-between"
+                  className="font-semibold flex w-full item-center p-1 justify-between "
                 >
                   Home
                   <HomeIcon className="text-green-900" />
@@ -214,7 +214,7 @@ const Header = () => {
                 <Link
                   to="/"
                   onClick={toggleMobileMenu}
-                  className="font-semibold flex w-full item-center justify-between"
+                  className="font-semibold flex w-full item-center p-1 justify-between"
                 >
                   Settings
                   <SettingsIcon className="text-green-900" />
@@ -224,7 +224,7 @@ const Header = () => {
                 <Link
                   to="/"
                   onClick={toggleMobileMenu}
-                  className="font-semibold flex w-full item-center justify-between"
+                  className="font-semibold flex w-full item-center p-1 justify-between"
                 >
                   Location
                   <PlaceOutlinedIcon className="text-green-900" />

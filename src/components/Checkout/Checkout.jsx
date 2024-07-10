@@ -82,6 +82,18 @@ const PaymentMethodDialog = ({ open, onClose }) => {
     }
   };
 
+  const handleClose = () => {
+    dispatch({
+      type: actionType.SET_OPEN_DEBIT_DIALOG,
+      payload: false,
+    });
+    dispatch({
+      type: actionType.SET_OPEN_TRANSFER_DIALOG,
+      payload: false,
+    });
+    onClose();
+  };
+
   return (
     <React.Fragment>
       <Dialog
@@ -169,9 +181,11 @@ const PaymentMethodDialog = ({ open, onClose }) => {
           </CardContent>
         </Card>
       </Dialog>
+
+      {/* DEBIT CARD DIALOG */}
       <Dialog
         open={openDebitDialog}
-        onClose={onClose}
+        onClose={handleClose}
         PaperProps={{ style: { borderRadius: 15 } }}
       >
         <DialogTitle>
@@ -179,7 +193,7 @@ const PaymentMethodDialog = ({ open, onClose }) => {
           <IconButton
             edge="end"
             color="inherit"
-            onClick={onClose}
+            onClick={handleClose}
             aria-label="close"
             style={{ position: "absolute", right: 8, top: 8 }}
           >
@@ -234,22 +248,24 @@ const PaymentMethodDialog = ({ open, onClose }) => {
           </form>
         </DialogContent>
         <DialogActions>
-          <Button onClick={onClose} color="primary">
+          <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={onClose} color="primary">
+          <Button onClick={handleClose} color="primary">
             Pay
           </Button>
         </DialogActions>
       </Dialog>
+
+      {/* bank transfer DIALOG */}
       <Dialog
         open={openTransferDialog}
-        onClose={onClose}
+        onClose={handleClose}
         PaperProps={{ style: { borderRadius: 15 } }}
       >
         <DialogTitle className="flex items-center justify-center">
           <span className="font-semibold flex-1"> Bank Transfer</span>
-          <IconButton onClick={onClose} aria-label="close">
+          <IconButton onClick={handleClose} aria-label="close">
             <CloseIcon className="text-green-900 border-green-900 border-2 rounded-full" />
           </IconButton>
         </DialogTitle>
@@ -272,7 +288,7 @@ const PaymentMethodDialog = ({ open, onClose }) => {
         <div className="flex justify-center items-center w-full mb-6">
           <Button
             className="bg-green-900 px-4 py-2 border-green-900 border-2 rounded-lg"
-            onClick={onclose}
+            onClick={handleClose}
             color="primary"
           >
             proceed

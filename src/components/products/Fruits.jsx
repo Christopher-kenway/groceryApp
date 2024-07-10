@@ -297,7 +297,7 @@ const Fruits = () => {
               <Chip
                 label=" How do you like your produce? Required"
                 variant="outlined"
-                className="chip mt-8 w-full font-semibold"
+                className="chip mt-8 py-2 w-full font-semibold bg-green-300"
               />
               <div className="flex flex-col items-start">
                 <FormGroup className="w-full p-1">
