@@ -304,12 +304,33 @@ const SuccessDialog = ({ open, onClose }) => (
     PaperProps={{ style: { borderRadius: 15 } }}
   >
     <DialogContent>
-      <div className="flex flex-col items-center justify-center">
-        <CheckCircleIcon color="success" fontSize="large" />
-        <Typography className="mt-4">Order Placed Successfully</Typography>
-        <Button onClick={onClose} color="primary">
-          Proceed
-        </Button>
+      <div className="flex flex-col items-center justify-center p-10">
+        <Typography>
+          <h1 className="mt-4 font-bold mb-10 text-lg">
+            Order Placed Successfully
+          </h1>
+        </Typography>
+        <CheckCircleIcon
+          color="success"
+          fontSize="large"
+          className="border-2 rounded-full border-green-900"
+        />
+
+        <div className="pt-10 w-full">
+          <Button
+            fullWidth
+            sx={{
+              backgroundColor: "#064F26",
+              color: "#fff",
+              "&:hover": {
+                backgroundColor: "#046A38",
+              },
+            }}
+            onClick={onClose}
+          >
+            Proceed
+          </Button>
+        </div>
       </div>
     </DialogContent>
   </Dialog>
