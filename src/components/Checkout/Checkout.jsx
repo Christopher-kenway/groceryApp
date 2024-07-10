@@ -272,27 +272,28 @@ const PaymentMethodDialog = ({ open, onClose }) => {
         <DialogContent>
           <div className="mb-4">
             <div className="text-lg font-bold mb-2">
-              Make a Transfer of NGN 12,850 to:
+              Make a Transfer of
+              <span className="text-green-900"> NGN 12,850</span> to:
             </div>
             <div className="mb-2">Name: Eriqueenah Grocery Store Credits</div>
             <div className="mb-2">Account Number: 0000000000</div>
-            <div className="mb-2">Bank: Providus Bank</div>
+            <div className="mb-2">Bank: WEMA BANK</div>
             <Divider className="my-2" />
-            <div className="text-sm flex items-center w-full border-2 border-green-900 justify-center ">
+            <div className="text-sm flex items-center w-full border-2 border-green-900 rounded-lg justify-center  ">
               <Button color="success" className="text-green-900">
-                Copy Account Number
+                Copy account number
               </Button>
             </div>
           </div>
         </DialogContent>
         <div className="flex justify-center items-center w-full mb-6">
-          <Button
+          <button
             className="bg-green-900 px-4 py-2 border-green-900 border-2 rounded-lg"
             onClick={handleClose}
             color="primary"
           >
             proceed
-          </Button>
+          </button>
         </div>
       </Dialog>
     </React.Fragment>
