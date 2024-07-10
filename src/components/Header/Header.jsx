@@ -21,6 +21,7 @@ import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import HomeIcon from "@mui/icons-material/Home";
 import SettingsIcon from "@mui/icons-material/Settings";
+import SearchIcon from "@mui/icons-material/Search";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -81,7 +82,7 @@ const Header = () => {
             </form>
           </div>
 
-          <div className="navicon__link items-center space-x-4 gap-2 relative lg:flex">
+          <div className="navicon__link hidden items-center space-x-4 gap-2 relative lg:flex">
             <motion.button
               whileTap={{ scale: 0.9 }}
               className="flex items-center text-green-900 cursor-pointer"
@@ -139,9 +140,19 @@ const Header = () => {
               whileTap={{ scale: 0.9 }}
               alt="Eriqueenah Logo"
               src={Logo}
-              className="h-8 w-auto cursor-pointer"
+              className="h-7 w-auto cursor-pointer"
             />
           </Link>
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            className="flex items-center text-green-800 hover:text-green-900 cursor-pointer"
+          >
+            <SearchIcon
+              style={{ fontSize: "2rem" }}
+              className="text-green-900"
+            />
+          </motion.button>
+
           <motion.button
             whileTap={{ scale: 0.9 }}
             className="flex items-center text-green-800 hover:text-green-900 cursor-pointer"
