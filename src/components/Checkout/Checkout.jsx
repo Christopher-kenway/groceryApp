@@ -342,22 +342,57 @@ const ReceiptDialog = ({ open, onClose }) => (
     onClose={onClose}
     PaperProps={{ style: { borderRadius: 15 } }}
   >
-    <DialogTitle className="text-center">
-      <Typography variant="h6">Eriqueenah Green Grocery Shop</Typography>
-    </DialogTitle>
-    <DialogContent>
-      <div className="flex flex-col items-center justify-center">
+    <div className="py-5 px-1 mx-auto">
+      <DialogTitle className="text-center ">
+        <Typography variant="h6">Eriqueenah Green Grocery Shop</Typography>
         <Typography>Location: Lagos</Typography>
-        <Typography>Strawberry (20) - ₦6,000</Typography>
-        <Typography>Eggplant (2) - ₦6,100</Typography>
-        <Typography>Banana (5) - ₦750</Typography>
-        <Typography>Name: Florence A</Typography>
-        <Typography>Address: no 2 olusegun street, Lagos</Typography>
-        <Button className="mt-4" color="success" variant="contained">
-          Download
-        </Button>
-      </div>
-    </DialogContent>
+      </DialogTitle>
+      <DialogContent>
+        <div className="gap-1 w-full">
+          <div className="flex flex-col w-full">
+            {" "}
+            <Typography className="w-full flex flex-row items-center justify-between">
+              <h1 className="font-bold"></h1>Strawberry (20)
+              <h1 className="text-green-900 font-bold">₦6,000</h1>
+            </Typography>
+            <Typography>
+              {" "}
+              <h1 className="font-bold">Eggplant (2) - ₦6,100</h1>
+            </Typography>
+            <Typography>
+              {" "}
+              <p className="font-bold">Banana (5) - ₦750</p>
+            </Typography>
+          </div>
+          <div>
+            <Typography>
+              <h1 className="font-bold">Name: Florence A</h1>
+            </Typography>
+            <Typography>
+              <h1 className="font-bold">
+                Address: no 2 olusegun street, Lagos
+              </h1>
+            </Typography>
+          </div>
+
+          <div className="pt-10 w-full">
+            <Button
+              fullWidth
+              sx={{
+                backgroundColor: "#064F26",
+                color: "#fff",
+                "&:hover": {
+                  backgroundColor: "#046A38",
+                },
+              }}
+              onClick={onClose}
+            >
+              Download
+            </Button>
+          </div>
+        </div>
+      </DialogContent>
+    </div>
   </Dialog>
 );
 
