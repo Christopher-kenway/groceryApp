@@ -32,6 +32,18 @@ import yam from "../src/assets/roots/yam.png";
 import onion from "../src/assets/roots/onion.png";
 import potato from "../src/assets/roots/potato.png";
 
+import springionion from "../src/assets/vegetables/springonion.png";
+import broccoli from "../src/assets/vegetables/broccoli.png";
+import brusel from "../src/assets/vegetables/brusel.png";
+import cabbage from "../src/assets/vegetables/cabbage.png";
+import eggplant from "../src/assets/vegetables/eggplant.png";
+import lettuce from "../src/assets/vegetables/lettuce.png";
+import celery from "../src/assets/vegetables/celery.png";
+import mushroom from "../src/assets/vegetables/mushroom.png";
+import mint from "../src/assets/vegetables/mint.png";
+import okra from "../src/assets/vegetables/okra.png";
+import peas from "../src/assets/vegetables/peas.png";
+
 export const fruitProducts = [
   {
     id: 1,
@@ -296,3 +308,102 @@ export const rootProducts = [
   // More products...
 ];
 
+export const vegProducts = [
+  {
+    id: 1,
+    name: "Spring onion",
+    href: "#",
+    price: "400 NGN",
+    imageSrc: springionion,
+    imageAlt: "springonion",
+  },
+  {
+    id: 2,
+    name: "Egg plant",
+    href: "#",
+    price: "3050 NGN",
+    imageSrc: eggplant,
+    imageAlt: "eggplant",
+  },
+  {
+    id: 3,
+    name: "Broccoli",
+    href: "#",
+    price: "1500 NGN",
+    imageSrc: broccoli,
+    imageAlt: "Bbroccoli",
+  },
+  {
+    id: 4,
+    name: "Okra",
+    href: "#",
+    price: "100 NGN",
+    imageSrc: okra,
+    imageAlt: "Okra",
+  },
+  {
+    id: 5,
+    name: "Cabbage",
+    href: "#",
+    price: "3000 NGN",
+    imageSrc: cabbage,
+    imageAlt: "Cabbage",
+  },
+  {
+    id: 6,
+    name: "Mushroom",
+    href: "#",
+    price: "200 NGN",
+    imageSrc: mushroom,
+  },
+  {
+    id: 7,
+    name: "lettuce",
+    href: "#",
+    price: "350 NGN",
+    imageSrc: lettuce,
+    imageAlt: "lettuce",
+  },
+  {
+    id: 8,
+    name: "Crawling Peas",
+    href: "#",
+    price: "1950 NGN",
+    imageSrc: peas,
+    imageAlt: "Crawling Peas",
+  },
+  {
+    id: 9,
+    name: "Mint",
+    href: "#",
+    price: "3000 NGN",
+    imageSrc: mint,
+    imageAlt: "Mint",
+  },
+  {
+    id: 10,
+    name: "Celery",
+    href: "#",
+    price: "2700 NGN",
+    imageSrc: celery,
+    imageAlt: "Celery",
+  },
+  {
+    id: 11,
+    name: "Brussel Sprouts",
+    href: "#",
+    price: "300 NGN",
+    imageSrc: brusel,
+    imageAlt: "Brussel Sprouts",
+  },
+  {
+    id: 12,
+    name: "Avocado",
+    href: "#",
+    price: "300 NGN",
+    imageSrc: avocado,
+    imageAlt: "avocado",
+  },
+
+
+];

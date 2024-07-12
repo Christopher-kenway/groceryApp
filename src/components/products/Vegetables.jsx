@@ -17,18 +17,7 @@ import {
   CardMedia,
   CardActions,
 } from "@mui/material";
-import springionion from "../../assets/vegetables/springonion.png";
-import broccoli from "../../assets/vegetables/broccoli.png";
-import brusel from "../../assets/vegetables/brusel.png";
-import cabbage from "../../assets/vegetables/cabbage.png";
-import eggplant from "../../assets/vegetables/eggplant.png";
-import avocado from "../../assets/vegetables/avocado.png";
-import lettuce from "../../assets/vegetables/lettuce.png";
-import celery from "../../assets/vegetables/celery.png";
-import mushroom from "../../assets/vegetables/mushroom.png";
-import mint from "../../assets/vegetables/mint.png";
-import okra from "../../assets/vegetables/okra.png";
-import peas from "../../assets/vegetables/peas.png";
+import { vegProducts } from "../../data";
 import { useStateValue } from "../../context/StateProvider";
 import { actionType } from "../../context/reducer";
 
@@ -49,105 +38,7 @@ const Vegetables = () => {
   };
   const [open, setOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const products = [
-    {
-      id: 1,
-      name: "Spring onion",
-      href: "#",
-      price: "400 NGN",
-      imageSrc: springionion,
-      imageAlt: "springonion",
-    },
-    {
-      id: 2,
-      name: "Egg plant",
-      href: "#",
-      price: "3050 NGN",
-      imageSrc: eggplant,
-      imageAlt: "eggplant",
-    },
-    {
-      id: 3,
-      name: "Broccoli",
-      href: "#",
-      price: "1500 NGN",
-      imageSrc: broccoli,
-      imageAlt: "Bbroccoli",
-    },
-    {
-      id: 4,
-      name: "Okra",
-      href: "#",
-      price: "100 NGN",
-      imageSrc: okra,
-      imageAlt: "Okra",
-    },
-    {
-      id: 5,
-      name: "Cabbage",
-      href: "#",
-      price: "3000 NGN",
-      imageSrc: cabbage,
-      imageAlt: "Cabbage",
-    },
-    {
-      id: 6,
-      name: "Mushroom",
-      href: "#",
-      price: "200 NGN",
-      imageSrc: mushroom,
-    },
-    {
-      id: 7,
-      name: "lettuce",
-      href: "#",
-      price: "350 NGN",
-      imageSrc: lettuce,
-      imageAlt: "lettuce",
-    },
-    {
-      id: 8,
-      name: "Crawling Peas",
-      href: "#",
-      price: "1950 NGN",
-      imageSrc: peas,
-      imageAlt: "Crawling Peas",
-    },
-    {
-      id: 9,
-      name: "Mint",
-      href: "#",
-      price: "3000 NGN",
-      imageSrc: mint,
-      imageAlt: "Mint",
-    },
-    {
-      id: 10,
-      name: "Celery",
-      href: "#",
-      price: "2700 NGN",
-      imageSrc: celery,
-      imageAlt: "Celery",
-    },
-    {
-      id: 11,
-      name: "Brussel Sprouts",
-      href: "#",
-      price: "300 NGN",
-      imageSrc: brusel,
-      imageAlt: "Brussel Sprouts",
-    },
-    {
-      id: 12,
-      name: "Avocado",
-      href: "#",
-      price: "300 NGN",
-      imageSrc: avocado,
-      imageAlt: "avocado",
-    },
 
-    // More products...
-  ];
   const handleOpen = (product) => {
     setSelectedProduct(product);
     setOpen(true);
@@ -163,7 +54,7 @@ const Vegetables = () => {
         Vegetables
       </h2>
       <div className="grid grid-cols-1 gap-x-12 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-        {products.map((product) => (
+        {vegProducts.map((product) => (
           <div
             key={product.id}
             className="border-2 border-green-900 rounded-lg overflow-hidden"
