@@ -17,18 +17,7 @@ import {
   CardMedia,
   CardActions,
 } from "@mui/material";
-import carrot from "../../assets/roots/carrot.png";
-import carrot2 from "../../assets/roots/carrot2.png";
-import cassava from "../../assets/roots/cassava.png";
-import cocoyam from "../../assets/roots/cocoyam.png";
-import garlic from "../../assets/roots/garlic.png";
-import ginger from "../../assets/roots/ginger.png";
-import sweetp from "../../assets/roots/sweetp.png";
-import tulip from "../../assets/roots/tulip.png";
-import tumeric from "../../assets/roots/tumeric.png";
-import yam from "../../assets/roots/yam.png";
-import onion from "../../assets/roots/onion.png";
-import potato from "../../assets/roots/potato.png";
+import { rootProducts } from "../../data";
 import { useStateValue } from "../../context/StateProvider";
 import { actionType } from "../../context/reducer";
 
@@ -49,105 +38,7 @@ const Roots = () => {
   };
   const [open, setOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const products = [
-    {
-      id: 1,
-      name: "Irish Potato",
-      href: "#",
-      price: "250 NGN",
-      imageSrc: potato,
-      imageAlt: "Irish Potato",
-    },
-    {
-      id: 2,
-      name: "Tulip",
-      href: "#",
-      price: "3050 NGN",
-      imageSrc: tulip,
-      imageAlt: "tulip",
-    },
-    {
-      id: 3,
-      name: "carrots",
-      href: "#",
-      price: "1500 NGN",
-      imageSrc: carrot,
-      imageAlt: "carrot",
-    },
-    {
-      id: 4,
-      name: "carrots",
-      href: "#",
-      price: "100 NGN",
-      imageSrc: carrot2,
-      imageAlt: "carrots",
-    },
-    {
-      id: 5,
-      name: "Cocoyam",
-      href: "#",
-      price: "3000 NGN",
-      imageSrc: cocoyam,
-      imageAlt: "Cocoyam",
-    },
-    {
-      id: 6,
-      name: "Yam",
-      href: "#",
-      price: "200 NGN",
-      imageSrc: yam,
-    },
-    {
-      id: 7,
-      name: "Ginger",
-      href: "#",
-      price: "350 NGN",
-      imageSrc: ginger,
-      imageAlt: "Ginger",
-    },
-    {
-      id: 8,
-      name: "Tumeric",
-      href: "#",
-      price: "1950 NGN",
-      imageSrc: tumeric,
-      imageAlt: "Tumeric",
-    },
-    {
-      id: 9,
-      name: "Onions",
-      href: "#",
-      price: "3000 NGN",
-      imageSrc: onion,
-      imageAlt: "Onion",
-    },
-    {
-      id: 10,
-      name: "cassava",
-      href: "#",
-      price: "2700 NGN",
-      imageSrc: cassava,
-      imageAlt: "cassava",
-    },
-    {
-      id: 11,
-      name: "Sweet Potatoes",
-      href: "#",
-      price: "300 NGN",
-      imageSrc: sweetp,
-      imageAlt: "Sweet Potatoes",
-    },
-    {
-      id: 12,
-      name: "garlic",
-      href: "#",
-      price: "300 NGN",
-      imageSrc: garlic,
-      imageAlt: "garlic",
-    },
 
-    // More products...
-  ];
   const handleOpen = (product) => {
     setSelectedProduct(product);
     setOpen(true);
@@ -164,7 +55,7 @@ const Roots = () => {
           Roots and Tubers
         </h2>
         <div className="grid grid-cols-1 gap-x-12 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          {products.map((product) => (
+          {rootProducts.map((product) => (
             <div
               key={product.id}
               className=" rounded-lg overflow-hidden bg-gray-100"
