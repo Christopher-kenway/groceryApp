@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import "./Products.css";
@@ -19,8 +19,7 @@ import {
 } from "@mui/material";
 import { useStateValue } from "../../context/StateProvider";
 import { actionType } from "../../context/reducer";
-import { fruitProducts } from "../../data";
-import { getProducts } from "../../services/api";
+import { getProducts, getProductById } from "../../services/api";
 
 const useStyles = styled({
   dialogPaper: {
@@ -30,6 +29,27 @@ const useStyles = styled({
 
 const Fruits = () => {
   const [{ cartShow }, dispatch] = useStateValue();
+  const [products, setProducts] = useState([]);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const data = await getProducts({
+          organizationId: "da6a6ebdadcc4b5d8be2e83c094274a8",
+          reverseSort: false,
+          page: 1,
+          size: 10,
+        });
+        setProducts(data.items);
+        console.log(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const showCart = () => {
     dispatch({
@@ -37,6 +57,7 @@ const Fruits = () => {
       payload: !cartShow,
     });
   };
+
   const [open, setOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
@@ -49,31 +70,50 @@ const Fruits = () => {
     setOpen(false);
     setSelectedProduct(null);
   };
+
+  function increment() {
+    setCount(function (prevCount) {
+      return (prevCount += 1);
+    });
+  }
+
+  function decrement() {
+    setCount(function (prevCount) {
+      if (prevCount > 0) {
+        return (prevCount -= 1);
+      } else {
+        return (prevCount = 0);
+      }
+    });
+  }
+
   return (
     <div className="mx-auto mt-5 max-w-2xl px-4 py-16 sm:px-6 sm:py-6 lg:max-w-7xl lg:px-4 w-full">
       <h2 className="text-2xl font-bold tracking-tight text-gray-900 mb-9">
         Fruits
       </h2>
       <div className="grid grid-cols-1 gap-x-12 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-        {fruitProducts.map((product) => (
+        {products.map((product) => (
           <div
             key={product.id}
             className="border-2 border-green-900 rounded-lg overflow-hidden"
           >
             <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden">
               <img
-                src={product.imageSrc}
-                alt={product.imageAlt}
+                src={`https://api.timbu.cloud/images/${product?.photos[0]?.url}`}
+                alt={product.name}
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="p-4 text-center">
               <h3 className="text-lg font-extrabold text-gray-900 font-sans">
                 {product.name}
+                <span className="ml-2">x{product?.available_quantity}</span>
               </h3>
-              <p className="text-gray-900 font-normal font-sans">
-                {product.price}
-              </p>
+              <Typography className="text-gray-900 font-normal font-sans">
+                {product?.current_price?.USD}
+              </Typography>
+
               <Link to="/">
                 <button
                   onClick={() => handleOpen(product)}
@@ -171,9 +211,9 @@ const Fruits = () => {
                 className="buttongroup mt-2 flex w-max p-1"
                 aria-label="Basic button group"
               >
-                <Button>-</Button>
-                <Button>5</Button>
-                <Button>+</Button>
+                <Button onClick={decrement}>-</Button>
+                <Button>{count}</Button>
+                <Button onClick={increment}>+</Button>
 
                 <Button
                   onClick={showCart}
@@ -195,4 +235,5 @@ const Fruits = () => {
     </div>
   );
 };
+
 export default Fruits;

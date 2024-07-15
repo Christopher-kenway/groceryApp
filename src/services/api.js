@@ -1,48 +1,38 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://api.timbu.cloud';
-
 const apiClient = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: ' https://timbu-get-all-products.reavdev.workers.dev',
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-const getProducts = async ({
-  organizationId,
-  page = 1,
-  size = 10,
-  searchQuery = '',
-  // Add other filters as needed (e.g., category, supplier, etc.)
-}) => {
+const getProducts = async ({ organizationId, page = 1, size = 10, reverseSort = false }) => {
   try {
     const response = await apiClient.get('/products', {
       params: {
         organization_id: organizationId,
         page,
         size,
-        search: searchQuery, // Adjust search parameter if needed
-        // Add other filter parameters as required
-        Appid: process.env.NEXT_PUBLIC_APP_ID,
-        Apikey: process.env.NEXT_PUBLIC_API_KEY,
+        reverse_sort: false,
+        Apikey: 'e790be541e1a47e4b12d8f64e0b3cea320240712140504545283',
+        Appid: 'C0JB1FBYKLUZL0R',
       },
     });
     return response.data;
   } catch (error) {
-    // Handle errors 
     console.error('Error fetching products:', error);
-    throw error; // Re-throw error for component to handle
+    throw error;
   }
 };
 
 const getProductById = async (productId, organizationId) => {
   try {
-    const response = await apiClient.get(`/products/${productId}`, {
+    const response = await apiClient.get(`/products/{product_id}`, {
       params: {
         organization_id: organizationId,
-        APP_ID: process.env.NEXT_PUBLIC_APP_ID,
-        API_KEY: process.env.NEXT_PUBLIC_API_KEY,
+        Apikey: 'e790be541e1a47e4b12d8f64e0b3cea320240712140504545283',
+        Appid: 'C0JB1FBYKLUZL0R',
       },
     });
     return response.data;
