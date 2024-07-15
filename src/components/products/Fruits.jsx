@@ -111,7 +111,7 @@ const Fruits = () => {
                 <span className="ml-2">x{product?.available_quantity}</span>
               </h3>
               <Typography className="text-gray-900 font-normal font-sans">
-                {product?.current_price?.USD}
+                NGN {product?.current_price?.[0]?.NGN?.[0] || "N/A"}
               </Typography>
 
               <Link to="/">
